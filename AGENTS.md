@@ -8,7 +8,7 @@ The rules shared by every Micelio repository are in [`docs/engineering-standard.
 
 ## The core is the tool
 
-Everything that checks a theme is a script of the core, `bogd3v/micelio`, at the release pinned in `.github/workflows/` (`v0.5.4`). To work on a theme, check out that tag, set `MICELIO_THEME_DIRS` to this repository's `themes/` and run `npm run theme:check -- <id>`, `npm run theme:pack -- <id>` and `npm run theme:admit -- <step>`; the guide is `docs/themes/publishing-a-theme.md` (section 7, locally) and the `create-theme` skill of the core. Node and Docker are those of the core (`.nvmrc`, `AGENTS.md` there). Set `MICELIO_ADMISSION=true` as the admission workflows do, so that a theme of this repository wins over a core theme with the same id (from `v0.5.4`; the run prints `using <id> from <path>, not the core's`); two folders of `MICELIO_THEME_DIRS` with one id are still an error.
+Everything that checks a theme is a script of the core, `bogd3v/micelio`, at the release pinned in `.github/workflows/` (`v0.5.5`). To work on a theme, check out that tag, set `MICELIO_THEME_DIRS` to this repository's `themes/` and run `npm run theme:check -- <id>`, `npm run theme:pack -- <id>` and `npm run theme:admit -- <step>`; the guide is `docs/themes/publishing-a-theme.md` (section 7, locally) and the `create-theme` skill of the core. Node and Docker are those of the core (`.nvmrc`, `AGENTS.md` there). In the Docker setup of the core, put a copy of this repository inside the core checkout (for example `theme-source/`) and set `MICELIO_THEME_DIRS=theme-source/themes`; an image built to run `perf` needs `PLAYWRIGHT_BROWSERS_PATH=/ms-playwright`, or the browsers are not found. Set `MICELIO_ADMISSION=true` as the admission workflows do, so that a theme of this repository wins over a core theme with the same id (from `v0.5.3`; the run prints `using <id> from <path>, not the core's`); two folders of `MICELIO_THEME_DIRS` with one id are still an error.
 
 ## Layout
 
@@ -21,6 +21,6 @@ Everything that checks a theme is a script of the core, `bogd3v/micelio`, at the
 ## Rules
 
 - A published version never changes: a fix is a new `version` in `theme.json`. A theme's `license` stays `AGPL-3.0-only`.
-- Move to another core release by replacing `v0.5.4` and `core-ref` together in every workflow, and re-read the templates of that release.
+- Move to another core release by replacing `v0.5.5` and `core-ref` together in every workflow, and re-read the templates of that release; do not change `accessibility/<id>.json` or the sentence of `accessibility/README.md` that describes it: a record keeps the core it was run on (`current` compares the theme version only).
 - Third-party fonts and images keep their license text beside them and an entry in `THIRD-PARTY.md` and `REUSE.toml`.
 - Never push, tag or run `Publish`/`Sign index` without the maintainer; never weaken a check (no skipped specs, no regenerated baselines).
