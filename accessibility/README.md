@@ -1,6 +1,6 @@
 # Accessibility records
 
-`<theme id>.json` here is the manual accessibility record of a theme: the result of the checklist in [`docs/themes/accessibility-checklist.md`](https://github.com/bogd3v/micelio/blob/v0.5.4/docs/themes/accessibility-checklist.md) of the core (WCAG 2.2 AA, standard section 9), run on the version being published, by a person or by an agent under a person's supervision (as the core's own run of 2026-10-19 was). It lives outside the theme folder because the package must not include it.
+`<theme id>.json` here is the manual accessibility record of a theme: the result of the checklist in [`docs/themes/accessibility-checklist.md`](https://github.com/bogd3v/micelio/blob/v0.5.5/docs/themes/accessibility-checklist.md) of the core (WCAG 2.2 AA, standard section 9), run on the version being published, by a person or by an agent under a person's supervision (as the core's own run of 2026-10-19 was). It lives outside the theme folder because the package must not include it.
 
 - A record is the result of a run of the checklist and is never copied from a run of another version. `by` names the person who ran it or supervised the agent that did, and who answers for the record, as they want to be named. `method` says who ran which lines: the tool and the agent for those an agent ran, and a person's own for the rest, such as the screen-reader lines.
 - `version` is the theme version that was checked, so a new version that changes CSS, markup or slots needs a new run; a version that only changes messages or images does not.
