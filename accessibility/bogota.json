@@ -1,0 +1,85 @@
+{
+  "version": "1.0.0",
+  "core": "v0.5.4",
+  "date": "2026-10-28",
+  "by": "Alejandro Ramirez Garcia",
+  "method": "micelio v0.5.4 (git archive, ba7ba97) with this repository's themes/bogota, built with MICELIO_SPECIMEN=1 in the Playwright 1.63.0 image of CI (Chromium 153; its Firefox for the forced-colors ring check) and served against the mock Strapi. The two screen-reader lines (screen-reader.names, screen-reader.announcements) were run by Alejandro Ramirez Garcia with Orca and Firefox on Fedora (drafts page, article view, user page). The other 16 lines were run by an agent (Claude Code) with Playwright scripts, not a person with a screen reader: 6 pages (home, blog, article, about, specimen, Spanish article) x noche/día x 1280/390 px x notice shown/dismissed = 48 runs, 4324 Tab stops, axe (wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa), reduced motion, forced colors, 200 % zoom, 320 px and WCAG 1.4.12 CSS by emulation.",
+  "lines": {
+    "keyboard.operable": {
+      "result": "pass",
+      "note": "48 runs (6 pages x noche/día x 1280/390 px x notice shown/dismissed), 4324 Tab stops: every control is a Tab stop and works with Enter, Space or the arrow keys (theme switch both ways, filter chips, details, text fields, slider buttons and arrows). The specimen's header copies are inert since core v0.5.4 and are no longer Tab stops."
+    },
+    "keyboard.order": {
+      "result": "fail",
+      "cause": "core",
+      "note": "Core markup, the same with the core's starter theme: the floating Back to top button comes right after the skip links once the page is scrolled (before the header in the DOM, bottom right on screen); on home the 'All articles' link of the latest section comes after its cards, the fediverse widget's 'mastodon.social' after the server picker, and 'Copy code' after the footer's Subscribe; on About 'Buy me a coffee' comes before 'LinkedIn' (below it on screen) and the code block before the 'search' link above it. WCAG 2.4.3. Bogotá's hero credit links (the last cause in Bogotá) now follow the hero actions. Footer columns read column by column (accepted).",
+      "issue": "https://github.com/bogd3v/micelio/issues/792"
+    },
+    "keyboard.focus-visible": {
+      "result": "pass",
+      "note": "Every Tab stop of the 48 runs shows an indicator of at least 3:1 (pixels of the stop with and without focus). The ring of the log and row list links of the specimen is on the row: 10 of 10 links in every mode and width, normal and forced colors (computed outline and pixels). In día the browser's own 1px amber (390 px) or dark (1280 px) ring on 70 stops is recoloured to --focus (#0a6656, 4.33 to 6.41:1 on the día surfaces); all core rings are unchanged (sweep of 2048 stops)."
+    },
+    "keyboard.focus-not-hidden": {
+      "result": "pass",
+      "note": "No Tab stop of the 48 runs is hidden whole: 0 of 4324 stops have no visible sample point. With the privacy notice shown at 390 px the specimen's 'Text' button, which the floating Back to top button (.myc-back-to-top, core) used to cover whole (0 of 15 points), is now 15 of 15 visible: Bogotá's scroll-padding-bottom is twice the notice's height, which clears the notice and the button riding over it (48px and its 24px gap), as the core's own rule does for the notice and the tab bar. Stops with fewer than half of their points visible went from 10 to 2 (the article's 'Copy code' at 390 px with the notice dismissed, 5 of 15 points, partly under that button, the same before the fix and not whole). Same in noche and día, and in forced colors."
+    },
+    "keyboard.skip-link": {
+      "result": "pass",
+      "note": "All 48 runs: the first Tab stop is the skip link, Enter moves focus to <main>, the next Tab lands inside <main>; also with the notice shown."
+    },
+    "keyboard.overlays": {
+      "result": "pass",
+      "note": "120 overlay triggers over the 48 runs (search palette, the menu sheet at 390 px, the tab bar's Search and Menu, the fediverse disclosure): each opens with the keyboard, keeps focus inside, closes with Escape and returns focus to its trigger; Ctrl+K opens and closes the palette. The account menu was not opened (the mock has no signed-in user)."
+    },
+    "screen-reader.landmarks": {
+      "result": "pass",
+      "note": "Every page, mode and width: one main, one header, one footer, and every nav has its own name. From the DOM, with axe (0 violations in 48 runs), not with a screen reader."
+    },
+    "screen-reader.headings": {
+      "result": "pass",
+      "note": "Home, blog, article, about and the Spanish article: one h1 and no skipped level in every run. The specimen has one level-1 heading since core v0.5.4 (its frames' copies read as level 4). That the heading list reads as an outline was not judged by a person."
+    },
+    "screen-reader.names": {
+      "result": "pass",
+      "note": "Orca read every control the maintainer reached or selected (drafts page, article view, user page). Run by Alejandro Ramirez Garcia with Orca with Firefox (Fedora), 5 minutes."
+    },
+    "screen-reader.announcements": {
+      "result": "pass",
+      "note": "Results of actions were announced (drafts page, article view, user page). Run by Alejandro Ramirez Garcia with Orca with Firefox (Fedora), 5 minutes."
+    },
+    "screen-reader.language": {
+      "result": "fail",
+      "cause": "core",
+      "issue": "https://github.com/bogd3v/micelio/issues/788",
+      "note": "On the Spanish article (/es/blog/guia-vue-composables) the English titles of the reference list have no lang attribute (the reference data has no language field yet: bogd3v/micelio-cms#393, then #788). WCAG 3.1.2. The html lang is right on every page and the language switcher buttons carry lang."
+    },
+    "zoom.200": {
+      "result": "pass",
+      "note": "640x400 at devicePixelRatio 2 (200 % of 1280), every page and mode, notice shown and dismissed: scrollWidth equals clientWidth, nothing is past the edge outside a scroller and no text is clipped by an overflow box."
+    },
+    "zoom.reflow-320": {
+      "result": "pass",
+      "note": "At 320 px every page has scrollWidth 320. The home hero credit, which was cut on both sides, is now inside the viewport (left 16, right 304 px in noche and día); no text of home leaves the viewport at 320 or 360 px outside the horizontal scrollers, which scroll on their own. The hero photograph itself is cropped by the page, by design."
+    },
+    "zoom.text-spacing": {
+      "result": "pass",
+      "note": "WCAG 1.4.12 CSS injected (line height 1.5, letter spacing 0.12 em, word spacing 0.16 em, paragraph margin 2 em) on every page, mode, width and notice state: no horizontal overflow, no newly clipped text on the five pages, no overlapping text. On the specimen at 390 px the 'Seed boxes' sample of its pricing group grows past its frame (the frame clips it); the same as in the earlier run, with the group's cards scrolling on their own. Automatic detection plus follow-up probes, not a full manual read."
+    },
+    "motion.reduced": {
+      "result": "pass",
+      "note": "prefers-reduced-motion: reduce on every page, mode and width: document.getAnimations() has no running or pending animation after load, while scrolling top to bottom, or while the palette, the sheet and the mode switch open and close; the slider does not advance in 9 s. Control with motion allowed: 31 animations detected, so the probe sees them."
+    },
+    "motion.forced-colors": {
+      "result": "pass",
+      "note": "forcedColors: active, 48 runs and 4324 Tab stops in Chromium: every stop shows an indicator (the log and row links on their row); borders of buttons, fields and chips survive; the pressed and current states of the switches and chips differ, except one row of the specimen that shows a pressed and a current item, which look alike. Bogotá's día ring colour is inside @media not (forced-colors): in Chromium and Firefox the outlines of all stops (2048 and 2056) are identical with and without the rule. Not judged by eye: text legibility and information by colour alone on every page; decorative SVGs (the hero birds, the Mastodon logos of the specimen, the slider arrows shown on hover and focus) are not drawn."
+    },
+    "pointer.target-size": {
+      "result": "pass",
+      "note": "Axe (wcag22aa, target-size): no violation in 48 runs. Own check of WCAG 2.5.8 over every link, button, field and summary, the slider dots and the table of contents: the only undersized targets close to each other are the inline citation links [1] [2] [3] inside a sentence, which are exempt."
+    },
+    "pointer.dragging": {
+      "result": "pass",
+      "note": "Spanish article with the slider (both modes, 1280 and 390 px): previous and next buttons of 44x44 px move it with a click, the arrow keys move it, the dots are buttons; autoplay does not run under reduced motion; nothing is draggable. Horizontal scrollers (chips, guide grid, fediverse cards) are focusable and scroll with the arrow keys."
+    }
+  }
+}
