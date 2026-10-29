@@ -1,9 +1,9 @@
 {
-  "version": "1.0.0",
-  "core": "v0.5.4",
-  "date": "2026-10-28",
+  "version": "1.0.1",
+  "core": "v0.5.5",
+  "date": "2026-10-29",
   "by": "Alejandro Ramirez Garcia",
-  "method": "micelio v0.5.4 (git archive, ba7ba97) with this repository's themes/bogota, built with MICELIO_SPECIMEN=1 in the Playwright 1.63.0 image of CI (Chromium 153; its Firefox for the forced-colors ring check) and served against the mock Strapi. The two screen-reader lines (screen-reader.names, screen-reader.announcements) were run by Alejandro Ramirez Garcia with Orca and Firefox on Fedora (drafts page, article view, user page). The other 16 lines were run by an agent (Claude Code) with Playwright scripts, not a person with a screen reader: 6 pages (home, blog, article, about, specimen, Spanish article) x noche/día x 1280/390 px x notice shown/dismissed = 48 runs, 4324 Tab stops, axe (wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa), reduced motion, forced colors, 200 % zoom, 320 px and WCAG 1.4.12 CSS by emulation.",
+  "method": "micelio v0.5.5 (git archive, 0d32b9f) with this repository's themes/bogota, built with MICELIO_SPECIMEN=1 in the Playwright 1.63.0 image of CI (Chromium 153 only: nothing was run in Firefox or WebKit) and served against the mock Strapi. The 16 lines other than the two screen-reader lines were run by an agent (Claude Code) with Playwright scripts, not a person with a screen reader: 6 pages (home, blog, article, about, specimen, Spanish article) x noche/día x 1280/390 px x notice shown/dismissed = 48 runs, 4324 Tab stops, axe (wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa), reduced motion, forced colors, 200 % zoom, 320 px and WCAG 1.4.12 CSS by emulation, plus 12 runs at 800 px, all with the notice shown. The día ring colour was not compared with and without Bogotá's rule on this version. The two screen-reader lines were run by Alejandro Ramirez Garcia, not the agent, with Orca and Firefox on KDE Plasma (Fedora), on a local 1.0.1 build, in 15 minutes; not copied from 1.0.0.",
   "lines": {
     "keyboard.operable": {
       "result": "pass",
@@ -17,11 +17,11 @@
     },
     "keyboard.focus-visible": {
       "result": "pass",
-      "note": "Every Tab stop of the 48 runs shows an indicator of at least 3:1 (pixels of the stop with and without focus). The ring of the log and row list links of the specimen is on the row: 10 of 10 links in every mode and width, normal and forced colors (computed outline and pixels). In día the browser's own 1px amber (390 px) or dark (1280 px) ring on 70 stops is recoloured to --focus (#0a6656, 4.33 to 6.41:1 on the día surfaces); all core rings are unchanged (sweep of 2048 stops)."
+      "note": "Every Tab stop of the 48 runs shows an indicator of at least 3:1 (pixels of the stop with and without focus). The ring of the log and row list links of the specimen is on the row: 10 of 10 links in every mode and width, normal and forced colors (computed outline and pixels). Bogotá's día ring colour (--focus) was not compared with and without the rule on this version: only the 3:1 indicator above was measured."
     },
     "keyboard.focus-not-hidden": {
       "result": "pass",
-      "note": "No Tab stop of the 48 runs is hidden whole: 0 of 4324 stops have no visible sample point. With the privacy notice shown at 390 px the specimen's 'Text' button, which the floating Back to top button (.myc-back-to-top, core) used to cover whole (0 of 15 points), is now 15 of 15 visible: Bogotá's scroll-padding-bottom is twice the notice's height, which clears the notice and the button riding over it (48px and its 24px gap), as the core's own rule does for the notice and the tab bar. Stops with fewer than half of their points visible went from 10 to 2 (the article's 'Copy code' at 390 px with the notice dismissed, 5 of 15 points, partly under that button, the same before the fix and not whole). Same in noche and día, and in forced colors."
+      "note": "No Tab stop of the 48 runs is hidden whole: 0 of 4324 stops have no visible sample point (nor in the 12 runs at 800 px). With the privacy notice shown at 390 px the specimen's 'Text' button is 15 of 15 visible: Bogotá's scroll-padding-bottom is twice the notice's height, which clears the notice and the core's Back to top button riding over it. From 768 px the page does not grow by the notice (the core's own rule), so at the end of the page, while the notice shows, the footer's 'Privacy and cookies' link is partly under it (9 of 15 points at 1280 px, 7 of 15 at 800 px) and so are the copyright and credit lines; never whole. Fewer than half of the points visible: in the 48 runs, 2 stops (the article's 'Copy code' at 390 px, notice dismissed, 5 of 15, under Back to top); in the 12 runs at 800 px, all with the notice shown, the footer's privacy link (7 of 15; 6 of 15 on the Spanish article). Same in noche and día, and in forced colors."
     },
     "keyboard.skip-link": {
       "result": "pass",
@@ -41,11 +41,11 @@
     },
     "screen-reader.names": {
       "result": "pass",
-      "note": "Orca read every control the maintainer reached or selected (drafts page, article view, user page). Run by Alejandro Ramirez Garcia with Orca with Firefox (Fedora), 5 minutes."
+      "note": "Run on bogota@1.0.1 by Alejandro Ramirez Garcia with Orca and Firefox on KDE Plasma (Fedora), on a local 1.0.1 build: drafts page, article view and user page. 15 minutes for both screen-reader lines."
     },
     "screen-reader.announcements": {
       "result": "pass",
-      "note": "Results of actions were announced (drafts page, article view, user page). Run by Alejandro Ramirez Garcia with Orca with Firefox (Fedora), 5 minutes."
+      "note": "Run on bogota@1.0.1 by Alejandro Ramirez Garcia with Orca and Firefox on KDE Plasma (Fedora), on a local 1.0.1 build: drafts page, article view and user page. 15 minutes for both screen-reader lines."
     },
     "screen-reader.language": {
       "result": "fail",
@@ -71,7 +71,7 @@
     },
     "motion.forced-colors": {
       "result": "pass",
-      "note": "forcedColors: active, 48 runs and 4324 Tab stops in Chromium: every stop shows an indicator (the log and row links on their row); borders of buttons, fields and chips survive; the pressed and current states of the switches and chips differ, except one row of the specimen that shows a pressed and a current item, which look alike. Bogotá's día ring colour is inside @media not (forced-colors): in Chromium and Firefox the outlines of all stops (2048 and 2056) are identical with and without the rule. Not judged by eye: text legibility and information by colour alone on every page; decorative SVGs (the hero birds, the Mastodon logos of the specimen, the slider arrows shown on hover and focus) are not drawn."
+      "note": "forcedColors: active, 48 runs and 4324 Tab stops in Chromium: every stop shows an indicator (the log and row links on their row); borders of buttons, fields and chips survive; the pressed and current states of the switches and chips differ, except one row of the specimen that shows a pressed and a current item, which look alike. Bogotá's día ring colour is inside @media not (forced-colors): its outlines were not compared with and without the rule on this version, and nothing was run in Firefox. Not judged by eye: text legibility and information by colour alone on every page; decorative SVGs (the hero birds, the Mastodon logos of the specimen, the slider arrows shown on hover and focus) are not drawn."
     },
     "pointer.target-size": {
       "result": "pass",

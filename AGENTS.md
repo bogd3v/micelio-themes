@@ -21,6 +21,6 @@ Everything that checks a theme is a script of the core, `bogd3v/micelio`, at the
 ## Rules
 
 - A published version never changes: a fix is a new `version` in `theme.json`. A theme's `license` stays `AGPL-3.0-only`.
-- Move to another core release by replacing `v0.5.5` and `core-ref` together in every workflow, and re-read the templates of that release; do not change `accessibility/<id>.json` or the sentence of `accessibility/README.md` that describes it: a record keeps the core it was run on (`current` compares the theme version only).
+- Move to another core release by replacing `v0.5.5` and `core-ref` together in every workflow, and re-read the templates of that release; do not change `accessibility/<id>.json` or the sentence of `accessibility/README.md` that describes it: a record keeps the core it was run on (`current` compares the theme version only), unless the theme `version` changes too: a new version is a new run, with its own record and that sentence.
 - Third-party fonts and images keep their license text beside them and an entry in `THIRD-PARTY.md` and `REUSE.toml`.
 - Never push, tag or run `Publish`/`Sign index` without the maintainer; never weaken a check (no skipped specs, no regenerated baselines).
