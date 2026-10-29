@@ -1,0 +1,18 @@
+/* Bogotá's own styling of the public hooks; the core styles everything else (ADR 0005, section 4). */
+
+/* The notice floats over a corner of the page from 768px: the page ends above it, as the core does on a phone */
+body {
+    padding-bottom: calc(var(--myc-tabbar-h) + var(--myc-notice-h, 0px));
+}
+
+/* Focus scrolls clear of the tab bar and the privacy notice, and, with the notice shown, of the core's Back to top button that rides over it (72px with its gap; a notice is taller): twice the notice's height, not under them (WCAG 2.4.11) */
+html {
+    scroll-padding-bottom: calc(var(--myc-tabbar-h) + var(--myc-notice-h, 0px) * 2);
+}
+
+/* Día: Chrome's own 1px amber focus ring is 2:1 on these surfaces (WCAG 1.4.11, 2.4.7). Only its colour is set, and not in forced colors, where the core's rings use Highlight. */
+@media not (forced-colors) {
+    [data-theme="dia"] :focus-visible:not(:target) {
+        outline-color: var(--focus);
+    }
+}

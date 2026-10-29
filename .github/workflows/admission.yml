@@ -1,0 +1,22 @@
+name: Admission
+
+# Every pull request is admitted the way publishing admits it (docs/themes/publishing-a-theme.md of bogd3v/micelio): theme:check and
+# theme:pack, performance budgets per site mode, visual regression and axe. Pinned to one core release: replace v0.5.4 and core-ref together
+# with the other workflows. Baselines are read from __screenshots__/<id>/ and the accessibility record from accessibility/<id>.json.
+# The status for the ruleset is `admission / Plan, theme:check and theme:pack` and its siblings once this has run.
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  admission:
+    uses: bogd3v/micelio/.github/workflows/theme-admission.yml@v0.5.4
+    with:
+      theme-dirs: themes
+      core-ref: v0.5.4
+    permissions:
+      contents: read
