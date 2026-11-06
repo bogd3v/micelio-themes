@@ -1,0 +1,68 @@
+/* Espora's page sections: round cards, heavy titles, icons in a node. Loaded only by pages that render sections (ADR 0005, section 4). */
+
+.myc-section-title {
+    font-weight: 700;
+    font-stretch: normal;
+    text-wrap: balance;
+}
+
+/* Items that are cards take the card corners; the hover lifts */
+[data-section="feature-grid"] .myc-section-item,
+[data-section="testimonials"][data-variant="grid"] .myc-section-item,
+[data-section="pricing"][data-variant="cards"] .myc-section-item,
+[data-section="stats"][data-variant="cards"] .myc-section-item,
+[data-section="post-list"][data-variant="cards"] .myc-section-item {
+    border-radius: var(--radius-card);
+}
+
+[data-section="feature-grid"] .myc-section-item:hover,
+[data-section="pricing"][data-variant="cards"] .myc-section-item:hover {
+    box-shadow: var(--shadow-raised);
+}
+
+/* A feature icon sits in a node */
+.myc-section-icon {
+    border-radius: var(--radius-full);
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+/* Media, galleries and scenes share the card corners */
+.myc-section-media {
+    overflow: hidden;
+    border-radius: var(--radius-card);
+}
+
+/* Figures are set in the display face */
+.myc-section-stat-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+}
+
+/* On the accent band the figures take the color of the network (a block option, contract 2.1) */
+[data-section="stats"][data-tone="accent"] .myc-section-stat-value {
+    color: var(--accent);
+}
+
+/* The recommended plan is ringed by the accent */
+.myc-section-plan-recommended {
+    border-color: var(--accent);
+}
+
+/* Questions read as headings */
+.myc-section-question {
+    font-family: var(--font-display);
+    font-weight: 600;
+}
+
+/* The card variants of cta and newsletter are one raised panel */
+[data-section="cta"][data-variant="card"] .myc-section-inner,
+[data-section="newsletter"][data-variant="card"] .myc-section-inner {
+    border-radius: var(--radius-card);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .myc-section-item {
+        transition: box-shadow var(--duration-base) var(--ease-standard);
+    }
+}

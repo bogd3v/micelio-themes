@@ -1,0 +1,618 @@
+{
+  "$schema": "../theme.schema.json",
+  "contract": "2.1",
+  "id": "espora",
+  "name": "Espora",
+  "version": "0.1.0",
+  "license": "AGPL-3.0-only",
+  "modes": [
+    {
+      "id": "claro",
+      "scheme": "light",
+      "name": "Claro"
+    },
+    {
+      "id": "oscuro",
+      "scheme": "dark",
+      "name": "Oscuro"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Bricolage Grotesque",
+      "file": "bricolage-grotesque-latin-wght.woff2",
+      "preload": true
+    },
+    {
+      "family": "Archivo",
+      "file": "archivo-latin-var.woff2",
+      "preload": true
+    }
+  ],
+  "images": {
+    "favicon": "favicon.svg"
+  },
+  "layout": {
+    "header": "bar",
+    "home": "showcase",
+    "postList": "grid",
+    "article": "aside",
+    "footer": "columns"
+  },
+  "color": {
+    "note": "Five primitives come from the Micelio logo (bosque, musgo, musgo-hondo, liquen, espora). The roles invert between modes as the logo does: a firm origin in ink, a living network in accent.",
+    "tokens": [
+      {
+        "name": "bosque",
+        "value": "#0f1f17",
+        "usage": "Primitive of the logo: the origin node and the name in light. Ink in claro, page in oscuro. Never pure black."
+      },
+      {
+        "name": "musgo",
+        "value": "#2f7a4a",
+        "usage": "Primitive of the logo: the network (threads and nodes) in light. Only for the mark; the interface uses accent."
+      },
+      {
+        "name": "musgo-hondo",
+        "value": "#276a3f",
+        "usage": "Primitive: musgo one step deeper, so accent and links pass 4.5:1 on surface-sunken and accent-soft too."
+      },
+      {
+        "name": "liquen",
+        "value": "#b9dc5a",
+        "usage": "Primitive of the logo: the network in dark, and the accent of oscuro. Never on a light background (1.4:1 on espora)."
+      },
+      {
+        "name": "espora",
+        "value": "#eef1ea",
+        "usage": "Primitive of the logo: the origin node and the name in dark. Page in claro, ink in oscuro."
+      },
+      {
+        "name": "mark-network",
+        "value": {
+          "claro": "{musgo}",
+          "oscuro": "{liquen}"
+        },
+        "usage": "The network of the mark and of the theme's art: threads and nodes, not the origin."
+      },
+      {
+        "name": "surface",
+        "value": {
+          "claro": "{espora}",
+          "oscuro": "{bosque}"
+        },
+        "usage": "Page background: the two grounds the logo was drawn on."
+      },
+      {
+        "name": "surface-raised",
+        "value": {
+          "claro": "#f8faf5",
+          "oscuro": "#172a20"
+        },
+        "usage": "Cards, menus, fields and the mobile tab bar: one step above surface."
+      },
+      {
+        "name": "surface-sunken",
+        "value": {
+          "claro": "#e2e7dc",
+          "oscuro": "#0a1510"
+        },
+        "usage": "Code blocks, figures and card covers: one step below surface."
+      },
+      {
+        "name": "line",
+        "value": {
+          "claro": "#d3dbcf",
+          "oscuro": "#26392e"
+        },
+        "usage": "Separators and card borders. Decorative: it does not delimit controls."
+      },
+      {
+        "name": "line-strong",
+        "value": {
+          "claro": "#6f8075",
+          "oscuro": "#6c8274"
+        },
+        "usage": "Control borders (fields, secondary button)."
+      },
+      {
+        "name": "ink",
+        "value": {
+          "claro": "{bosque}",
+          "oscuro": "{espora}"
+        },
+        "usage": "Main text and the fill of the primary button."
+      },
+      {
+        "name": "ink-muted",
+        "value": {
+          "claro": "#4a5a50",
+          "oscuro": "#a7b5ab"
+        },
+        "usage": "Secondary text: excerpts, metadata, dates, help."
+      },
+      {
+        "name": "on-ink",
+        "value": {
+          "claro": "{espora}",
+          "oscuro": "{bosque}"
+        },
+        "usage": "Text on an ink fill."
+      },
+      {
+        "name": "accent",
+        "value": {
+          "claro": "{musgo-hondo}",
+          "oscuro": "{liquen}"
+        },
+        "usage": "The color of the network: accent button, active states, brand marks. It inverts as the logo does."
+      },
+      {
+        "name": "accent-soft",
+        "value": {
+          "claro": "#d7e8d6",
+          "oscuro": "#1f3524"
+        },
+        "usage": "Tint behind accent text, and the surface of a block with tone accent."
+      },
+      {
+        "name": "accent-hover",
+        "value": {
+          "claro": "#1f5733",
+          "oscuro": "#cbe67f"
+        },
+        "usage": "Accent on hover: deeper in claro, brighter in oscuro."
+      },
+      {
+        "name": "on-accent",
+        "value": {
+          "claro": "#ffffff",
+          "oscuro": "{bosque}"
+        },
+        "usage": "Text and icons on accent and accent-hover."
+      },
+      {
+        "name": "link",
+        "value": {
+          "claro": "{musgo-hondo}",
+          "oscuro": "{liquen}"
+        },
+        "usage": "Links in running text."
+      },
+      {
+        "name": "link-soft",
+        "value": {
+          "claro": "#dfeadb",
+          "oscuro": "#1b2e22"
+        },
+        "usage": "Tinted background of links, highlights and active items."
+      },
+      {
+        "name": "focus",
+        "value": "{accent}",
+        "usage": "Focus ring: 2px solid with a 2px offset."
+      },
+      {
+        "name": "success",
+        "value": {
+          "claro": "{musgo-hondo}",
+          "oscuro": "#7fc795"
+        },
+        "usage": "Success state. Always with an icon and a word: its lightness is close to danger's."
+      },
+      {
+        "name": "success-soft",
+        "value": {
+          "claro": "#d7e8d6",
+          "oscuro": "#1f3524"
+        },
+        "usage": "Background of a success message."
+      },
+      {
+        "name": "warning",
+        "value": {
+          "claro": "#7a5a10",
+          "oscuro": "#e0b95a"
+        },
+        "usage": "Warning state."
+      },
+      {
+        "name": "warning-soft",
+        "value": {
+          "claro": "#f1e4bd",
+          "oscuro": "#392f16"
+        },
+        "usage": "Background of a warning message."
+      },
+      {
+        "name": "danger",
+        "value": {
+          "claro": "#a3392b",
+          "oscuro": "#f29a85"
+        },
+        "usage": "Errors and destructive actions. Always with an icon and a word."
+      },
+      {
+        "name": "danger-soft",
+        "value": {
+          "claro": "#f6dcd6",
+          "oscuro": "#3d2420"
+        },
+        "usage": "Background of an error message."
+      },
+      {
+        "name": "info",
+        "value": {
+          "claro": "#2f5f8a",
+          "oscuro": "#8fb8de"
+        },
+        "usage": "Informative state."
+      },
+      {
+        "name": "info-soft",
+        "value": {
+          "claro": "#dbe6f1",
+          "oscuro": "#1f2c39"
+        },
+        "usage": "Background of an informative message."
+      },
+      {
+        "name": "category-1",
+        "value": "{accent}",
+        "usage": "Category 1: moss."
+      },
+      {
+        "name": "category-1-soft",
+        "value": "{accent-soft}",
+        "usage": "Background behind category 1 text."
+      },
+      {
+        "name": "category-2",
+        "value": {
+          "claro": "#2f5f8a",
+          "oscuro": "#8fb8de"
+        },
+        "usage": "Category 2: slate blue."
+      },
+      {
+        "name": "category-2-soft",
+        "value": {
+          "claro": "#dbe6f1",
+          "oscuro": "#1f2c39"
+        },
+        "usage": "Background behind category 2 text."
+      },
+      {
+        "name": "category-3",
+        "value": {
+          "claro": "#7a5a10",
+          "oscuro": "#e0b95a"
+        },
+        "usage": "Category 3: ochre."
+      },
+      {
+        "name": "category-3-soft",
+        "value": {
+          "claro": "#f1e4bd",
+          "oscuro": "#392f16"
+        },
+        "usage": "Background behind category 3 text."
+      },
+      {
+        "name": "category-4",
+        "value": {
+          "claro": "#9c4a2f",
+          "oscuro": "#e8946c"
+        },
+        "usage": "Category 4: clay."
+      },
+      {
+        "name": "category-4-soft",
+        "value": {
+          "claro": "#f3ddd0",
+          "oscuro": "#3b2a21"
+        },
+        "usage": "Background behind category 4 text."
+      },
+      {
+        "name": "category-5",
+        "value": {
+          "claro": "#7a3f66",
+          "oscuro": "#d6a0c4"
+        },
+        "usage": "Category 5: plum."
+      },
+      {
+        "name": "category-5-soft",
+        "value": {
+          "claro": "#eadbe5",
+          "oscuro": "#36263a"
+        },
+        "usage": "Background behind category 5 text."
+      },
+      {
+        "name": "code-ink",
+        "value": "{ink}",
+        "usage": "Code text, on surface-sunken."
+      },
+      {
+        "name": "code-muted",
+        "value": "{ink-muted}",
+        "usage": "Comments and punctuation in code."
+      },
+      {
+        "name": "code-keyword",
+        "value": "{category-5}",
+        "usage": "Keywords in code."
+      },
+      {
+        "name": "code-string",
+        "value": "{accent}",
+        "usage": "Strings in code."
+      },
+      {
+        "name": "code-number",
+        "value": "{warning}",
+        "usage": "Numbers in code."
+      },
+      {
+        "name": "code-function",
+        "value": "{info}",
+        "usage": "Function names in code."
+      }
+    ]
+  },
+  "shadow": {
+    "note": "Soft shadows tinted with bosque; nothing glows except the halo of the accent.",
+    "tokens": [
+      {
+        "name": "shadow-raised",
+        "value": {
+          "claro": "0 1px 2px rgba(15, 31, 23, 0.06), 0 10px 28px -10px rgba(15, 31, 23, 0.18)",
+          "oscuro": "0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -10px rgba(0, 0, 0, 0.55)"
+        },
+        "usage": "Raised cards: a soft two-layer shadow tinted with bosque."
+      },
+      {
+        "name": "shadow-overlay",
+        "value": {
+          "claro": "0 24px 48px -16px rgba(15, 31, 23, 0.28), 0 6px 14px -6px rgba(15, 31, 23, 0.14)",
+          "oscuro": "0 24px 48px -16px rgba(0, 0, 0, 0.6), 0 6px 14px -6px rgba(0, 0, 0, 0.4)"
+        },
+        "usage": "Floating controls over content."
+      },
+      {
+        "name": "glow-accent",
+        "value": {
+          "claro": "0 0 0 3px rgba(39, 106, 63, 0.22)",
+          "oscuro": "0 0 0 3px rgba(185, 220, 90, 0.28)"
+        },
+        "usage": "Halo of the accent button on hover. Nothing else glows."
+      },
+      {
+        "name": "glow-link",
+        "value": "none",
+        "usage": "No glow on interactive surfaces."
+      }
+    ]
+  },
+  "spacing": {
+    "note": "4px base.",
+    "tokens": [
+      {
+        "name": "space-1",
+        "value": "4px",
+        "usage": "Base 4px."
+      },
+      {
+        "name": "space-2",
+        "value": "8px"
+      },
+      {
+        "name": "space-3",
+        "value": "12px"
+      },
+      {
+        "name": "space-4",
+        "value": "16px"
+      },
+      {
+        "name": "space-6",
+        "value": "24px"
+      },
+      {
+        "name": "space-8",
+        "value": "32px"
+      },
+      {
+        "name": "space-12",
+        "value": "48px"
+      },
+      {
+        "name": "space-section",
+        "value": "128px",
+        "usage": "Padding between page sections."
+      },
+      {
+        "name": "space-gutter",
+        "value": "{space-8}",
+        "usage": "Gap of card grids."
+      },
+      {
+        "name": "space-inline",
+        "value": "20px",
+        "usage": "Side margin of the page; from 768px it centers the container.",
+        "at": {
+          "768px": "max(clamp(24px, 8vw, 120px), calc((100% - {container}) / 2))"
+        }
+      }
+    ]
+  },
+  "radius": {
+    "note": "Rounded, like the nodes and thread ends of the logo.",
+    "tokens": [
+      {
+        "name": "radius-xs",
+        "value": "4px",
+        "usage": "Tag dots, kbd and inline code."
+      },
+      {
+        "name": "radius-control",
+        "value": "10px",
+        "usage": "Buttons and fields."
+      },
+      {
+        "name": "radius-card",
+        "value": "20px",
+        "usage": "Cards and panels."
+      },
+      {
+        "name": "radius-full",
+        "value": "9999px",
+        "usage": "Pills, avatars and nodes: the circles of the logo."
+      }
+    ]
+  },
+  "size": {
+    "tokens": [
+      {
+        "name": "container",
+        "value": "1120px",
+        "usage": "Maximum width of the page."
+      },
+      {
+        "name": "measure",
+        "value": "68ch",
+        "usage": "Maximum width of a reading line."
+      },
+      {
+        "name": "nav-height",
+        "value": "72px",
+        "usage": "Height of the header's main row in the bar layout."
+      }
+    ]
+  },
+  "motion": {
+    "note": "Quick and sober. Theme animations live under prefers-reduced-motion: no-preference.",
+    "tokens": [
+      {
+        "name": "duration-fast",
+        "value": "180ms"
+      },
+      {
+        "name": "duration-base",
+        "value": "280ms"
+      },
+      {
+        "name": "duration-slow",
+        "value": "520ms"
+      },
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.25, 0.1, 0.25, 1)"
+      },
+      {
+        "name": "ease-emphasized",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "usage": "Eases out softly."
+      }
+    ]
+  },
+  "type": {
+    "families": {
+      "display": "\"Bricolage Grotesque\", \"Bricolage Grotesque Fallback\", \"Archivo\", system-ui, sans-serif",
+      "sans": "\"Archivo\", \"Archivo Fallback\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "mono": "ui-monospace, \"SF Mono\", Menlo, Consolas, \"Liberation Mono\", monospace"
+    },
+    "groups": [
+      {
+        "name": "Display",
+        "family": "display",
+        "styles": [
+          {
+            "name": "display-xl",
+            "fontSize": "64px",
+            "lineHeight": "68px",
+            "fontWeight": 700,
+            "letterSpacing": "-0.025em"
+          },
+          {
+            "name": "display-l",
+            "fontSize": "44px",
+            "lineHeight": "50px",
+            "fontWeight": 700,
+            "letterSpacing": "-0.02em"
+          },
+          {
+            "name": "heading-1",
+            "fontSize": "32px",
+            "lineHeight": "38px",
+            "fontWeight": 600,
+            "letterSpacing": "-0.01em"
+          },
+          {
+            "name": "heading-2",
+            "fontSize": "24px",
+            "lineHeight": "30px",
+            "fontWeight": 600
+          },
+          {
+            "name": "heading-3",
+            "fontSize": "20px",
+            "lineHeight": "26px",
+            "fontWeight": 600
+          }
+        ]
+      },
+      {
+        "name": "Text",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "body-l",
+            "fontSize": "20px",
+            "lineHeight": "32px",
+            "fontWeight": 400
+          },
+          {
+            "name": "body",
+            "fontSize": "17px",
+            "lineHeight": "28px",
+            "fontWeight": 400
+          },
+          {
+            "name": "body-s",
+            "fontSize": "15px",
+            "lineHeight": "24px",
+            "fontWeight": 400
+          },
+          {
+            "name": "eyebrow",
+            "fontSize": "13px",
+            "lineHeight": "18px",
+            "fontWeight": 600,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "name": "meta",
+            "fontSize": "14px",
+            "lineHeight": "20px",
+            "fontWeight": 400
+          }
+        ]
+      },
+      {
+        "name": "Mono",
+        "family": "mono",
+        "styles": [
+          {
+            "name": "code",
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": 400
+          }
+        ]
+      }
+    ]
+  }
+}

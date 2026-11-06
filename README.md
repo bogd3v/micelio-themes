@@ -5,6 +5,7 @@ The official themes of [Micelio](https://github.com/bogd3v/micelio), published t
 | Theme | What it is |
 | --- | --- |
 | [`bogota`](themes/bogota/README.md) | The theme of BogDev: two modes (`noche`, `dia`), a hero with slots, Archivo and JetBrains Mono |
+| [`espora`](themes/espora/README.md) | The official theme of Micelio: two modes (`claro`, `oscuro`), the colors of the Micelio logo, Bricolage Grotesque and Archivo |
 
 A site installs a published theme with `npm run theme:add -- <id>[@range]` and `npm run theme:pull` in its Micelio checkout (`docs/operate/themes.md` of the core). The starter theme stays in the core.
 
