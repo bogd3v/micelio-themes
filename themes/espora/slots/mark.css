@@ -1,0 +1,47 @@
+/* ThemeMark: the symbol in one ink, then the site name */
+.espora-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--ink);
+    line-height: 1;
+}
+
+.espora-mark-glyph {
+    display: block;
+    flex: none;
+    fill: currentColor;
+}
+
+/* Threads thicken as the mark gets smaller, so they hold at 30px */
+.espora-mark-threads {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.espora-mark-footer .espora-mark-threads {
+    stroke-width: 5.5;
+}
+
+.espora-mark-name {
+    font: var(--text-heading-2);
+    letter-spacing: var(--tracking-heading-1);
+}
+
+.espora-mark-footer {
+    gap: var(--space-4);
+}
+
+.espora-mark-footer .espora-mark-name {
+    font: var(--text-heading-1);
+}
+
+/* At 320px the header row is wider than the page: the name gives way before the buttons do (WCAG 1.4.10) */
+@media (max-width: 359.98px) {
+    .espora-mark-header .espora-mark-name {
+        font: var(--text-heading-3);
+    }
+}

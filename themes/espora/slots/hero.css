@@ -1,0 +1,64 @@
+/* ThemeHero: fills the box the core gives it (760 x 720 from 1024px, 390 x 300 below) */
+/* The root keeps the box and the display the core gives it (hidden below 1024px, or the compact box): only the drawing is laid out here */
+.espora-hero-art {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    /* The box starts under the end of the copy column: the drawing keeps to its right side */
+    padding: var(--space-12) var(--space-8) var(--space-12) 22%;
+}
+
+.espora-hero-compact .espora-hero-art {
+    padding: var(--space-4);
+}
+
+.espora-hero-rings {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 1;
+}
+
+.espora-hero-fine {
+    fill: none;
+    stroke: var(--mark-network);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    opacity: 0.7;
+}
+
+.espora-hero-threads {
+    fill: none;
+    stroke: var(--mark-network);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.espora-hero-nodes {
+    fill: var(--mark-network);
+}
+
+.espora-hero-buds {
+    fill: var(--mark-network);
+    opacity: 0.85;
+}
+
+.espora-hero-origin {
+    fill: var(--ink);
+}
+
+/* Windows high contrast: the network keeps to the system text color */
+@media (forced-colors: active) {
+    .espora-hero-fine,
+    .espora-hero-threads,
+    .espora-hero-rings {
+        stroke: CanvasText;
+    }
+
+    .espora-hero-nodes,
+    .espora-hero-buds,
+    .espora-hero-origin {
+        fill: CanvasText;
+    }
+}

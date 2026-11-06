@@ -1,0 +1,63 @@
+/* Local fallbacks sized to the web fonts, so the swap does not reflow text (docs/performance.md of the core).
+   The Bricolage Grotesque faces are those of the core's app/assets/fonts/display-fallbacks.css (scripts/perf/font-fallbacks.py --display);
+   the Archivo faces are the normal-width ones of Bogotá's font-fallbacks.css, for the same file. */
+
+@font-face {
+    font-family: "Bricolage Grotesque Fallback";
+    font-weight: 100 549;
+    src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+    size-adjust: 95.21%;
+    ascent-override: 97.68%;
+    descent-override: 28.36%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Bricolage Grotesque Fallback";
+    font-weight: 550 900;
+    src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+    size-adjust: 90.57%;
+    ascent-override: 102.69%;
+    descent-override: 29.81%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Archivo Fallback";
+    font-weight: 100 349;
+    src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+    size-adjust: 96.32%;
+    ascent-override: 91.16%;
+    descent-override: 21.80%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Archivo Fallback";
+    font-weight: 350 449;
+    src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+    size-adjust: 98.07%;
+    ascent-override: 89.53%;
+    descent-override: 21.41%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Archivo Fallback";
+    font-weight: 450 549;
+    src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+    size-adjust: 99.85%;
+    ascent-override: 87.93%;
+    descent-override: 21.03%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Archivo Fallback";
+    font-weight: 550 900;
+    src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+    size-adjust: 94.14%;
+    ascent-override: 93.26%;
+    descent-override: 22.31%;
+    line-gap-override: 0%;
+}

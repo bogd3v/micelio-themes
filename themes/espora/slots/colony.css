@@ -1,0 +1,21 @@
+/* ThemeIllustration: threads and nodes in the category color, the origin in ink */
+.espora-colony {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.espora-colony-threads {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.espora-colony-node {
+    fill: currentColor;
+}
+
+.espora-colony-origin {
+    fill: var(--ink);
+}

@@ -1,0 +1,11 @@
+{
+  "theme": {
+    "modes": {
+      "claro": "Light",
+      "oscuro": "Dark"
+    },
+    "latest": {
+      "emptyNote": "Nothing here yet · Come back soon"
+    }
+  }
+}

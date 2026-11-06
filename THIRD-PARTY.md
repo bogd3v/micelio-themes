@@ -8,6 +8,8 @@ Material in this repository that is not under the repository's own license (AGPL
 | --- | --- | --- |
 | Archivo, The Archivo Project Authors | `themes/bogota/fonts/archivo-latin-var.woff2` | OFL-1.1 (`themes/bogota/fonts/OFL-Archivo.txt`) |
 | JetBrains Mono, The JetBrains Mono Project Authors | `themes/bogota/fonts/jetbrains-mono-latin-var.woff2` | OFL-1.1 (`themes/bogota/fonts/OFL-JetBrainsMono.txt`) |
+| Archivo, The Archivo Project Authors | `themes/espora/fonts/archivo-latin-var.woff2` | OFL-1.1 (`themes/espora/fonts/OFL-Archivo.txt`) |
+| Bricolage Grotesque, The Bricolage Grotesque Project Authors | `themes/espora/fonts/bricolage-grotesque-latin-wght.woff2` | OFL-1.1 (`themes/espora/fonts/OFL-BricolageGrotesque.txt`) |
 
 ## Images
 
