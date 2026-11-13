@@ -1,0 +1,11 @@
+{
+  "theme": {
+    "modes": {
+      "papel": "Paper",
+      "tinta": "Ink"
+    },
+    "latest": {
+      "emptyNote": "Print run in progress · Come back soon"
+    }
+  }
+}

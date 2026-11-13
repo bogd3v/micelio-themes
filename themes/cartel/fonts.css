@@ -1,0 +1,19 @@
+/* Anton (OFL), latin subset: titles. The font has one weight; the face covers the whole range so that a heading
+   the core sets at 500 or 600 is drawn with it as it is, not with a bold the browser makes up */
+@font-face {
+    font-family: "Anton";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 900;
+    src: url("/fonts/anton-latin-400.woff2") format("woff2");
+}
+
+/* Atkinson Hyperlegible Next (OFL), variable weight, latin subset: text and interface */
+@font-face {
+    font-family: "Atkinson Hyperlegible Next";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 200 800;
+    src: url("/fonts/atkinson-hyperlegible-next-latin-wght.woff2") format("woff2-variations"),
+        url("/fonts/atkinson-hyperlegible-next-latin-wght.woff2") format("woff2");
+}

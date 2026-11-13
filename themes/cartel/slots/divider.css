@@ -1,0 +1,74 @@
+/* ThemeDivider: the control strip a printer leaves on the edge of the sheet */
+.cartel-strip {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-block: var(--space-6);
+}
+
+/* A registration mark: a ring crossed by two hairlines */
+.cartel-strip-mark {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--ink-muted);
+    border-radius: var(--radius-full);
+    background:
+        linear-gradient(var(--ink-muted), var(--ink-muted)) center / 100% 1.5px no-repeat,
+        linear-gradient(var(--ink-muted), var(--ink-muted)) center / 1.5px 100% no-repeat;
+}
+
+.cartel-strip-patches {
+    display: flex;
+    flex: none;
+}
+
+.cartel-strip-patch {
+    width: 20px;
+    height: 20px;
+}
+
+.cartel-strip-key {
+    background: var(--ink);
+}
+
+.cartel-strip-first {
+    background: var(--accent);
+}
+
+.cartel-strip-second {
+    background: var(--overprint);
+}
+
+/* Three tints of the first ink, as halftones */
+.cartel-strip-tone-3 {
+    background: radial-gradient(circle at center, var(--accent) 0 1.9px, transparent 2.3px) 0 0 / 5px 5px;
+}
+
+.cartel-strip-tone-2 {
+    background: radial-gradient(circle at center, var(--accent) 0 1.3px, transparent 1.7px) 0 0 / 5px 5px;
+}
+
+.cartel-strip-tone-1 {
+    background: radial-gradient(circle at center, var(--accent) 0 0.7px, transparent 1.1px) 0 0 / 5px 5px;
+}
+
+/* A dotted rule runs to the far mark */
+.cartel-strip-rule {
+    flex: 1;
+    height: 5px;
+    background: radial-gradient(circle at center, var(--line-strong) 0 1.1px, transparent 1.5px) 0 0 / 5px 5px;
+}
+
+@media (forced-colors: active) {
+    .cartel-strip-mark {
+        border-color: CanvasText;
+        background: none;
+    }
+
+    .cartel-strip-patch,
+    .cartel-strip-rule {
+        background: none;
+        border: 1px solid CanvasText;
+    }
+}
