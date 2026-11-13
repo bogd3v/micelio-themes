@@ -1,0 +1,22 @@
+/* ThemeDivider: the drawing keeps its scale and is cropped to the footer width, so the nodes stay round */
+.espora-divider {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-block: var(--space-6);
+    overflow: visible;
+}
+
+.espora-divider-thread {
+    fill: none;
+    stroke: var(--mark-network);
+    stroke-width: 1.5;
+}
+
+.espora-divider-origin {
+    fill: var(--ink);
+}
+
+.espora-divider-node {
+    fill: var(--mark-network);
+}

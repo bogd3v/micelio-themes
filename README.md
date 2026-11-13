@@ -5,6 +5,7 @@ The official themes of [Micelio](https://github.com/bogd3v/micelio), published t
 | Theme | What it is |
 | --- | --- |
 | [`bogota`](themes/bogota/README.md) | The theme of BogDev: two modes (`noche`, `dia`), a hero with slots, Archivo and JetBrains Mono |
+| [`espora`](themes/espora/README.md) | The official theme of Micelio: two modes (`claro`, `oscuro`), the colors of the Micelio logo, Bricolage Grotesque and Archivo |
 
 A site installs a published theme with `npm run theme:add -- <id>[@range]` and `npm run theme:pull` in its Micelio checkout (`docs/operate/themes.md` of the core). The starter theme stays in the core.
 
@@ -19,7 +20,7 @@ accessibility/<id>.json     the manual accessibility record (outside the package
 
 ## How a change reaches the registry
 
-1. **Pull request.** `admission.yml` runs the core's `theme-admission.yml` on every pull request: `theme:check` and `theme:pack`, the performance budgets per site mode, visual regression and axe against the baselines. `dco.yml` checks `Signed-off-by` on every commit. `admission.yml` is pinned to one core release (`v0.6.1`, in `uses:` and `core-ref`, as are `snapshots.yml`, `publish.yml` and `sign-index.yml`); `dco.yml` to a commit of `micelio-engineering`.
+1. **Pull request.** `admission.yml` runs the core's `theme-admission.yml` on every pull request, once per theme and from that theme's own folder, as `publish.yml` does: `theme:check` and `theme:pack`, the performance budgets per site mode, visual regression and axe against the baselines. `dco.yml` checks `Signed-off-by` on every commit. `admission.yml` is pinned to one core release (`v0.6.1`, in `uses:` and `core-ref`, as are `snapshots.yml`, `publish.yml` and `sign-index.yml`); `dco.yml` to a commit of `micelio-engineering`.
 2. **Version.** Raise `version` in `themes/<id>/theme.json` (semver; a published version never changes). A change to CSS, markup or slots also needs a new accessibility record.
 3. **Publish.** A maintainer runs `Publish` (`publish.yml`, from `main`) with the theme id. It admits the theme again, pushes `ghcr.io/bogd3v/micelio-themes/<id>:<version>`, attests it and lists it in the signed index. `Sign index` (`sign-index.yml`) yanks a version, marks one incompatible with a core (`incompatible`, from v0.6.0), or lists one that a failed `Publish` run left pushed but unlisted. The signing identities are the paths of these two files on `main`, which the core pins: do not rename or move them. The steps are in [`publishing-a-theme.md`](https://github.com/bogd3v/micelio/blob/v0.6.1/docs/themes/publishing-a-theme.md), sections 8 to 12.
 

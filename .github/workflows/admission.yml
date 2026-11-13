@@ -3,7 +3,9 @@ name: Admission
 # Every pull request is admitted the way publishing admits it (docs/themes/publishing-a-theme.md of bogd3v/micelio): theme:check and
 # theme:pack, performance budgets per site mode, visual regression and axe. Pinned to one core release: replace v0.6.1 and core-ref together
 # with the other workflows. Baselines are read from __screenshots__/<id>/ and the accessibility record from accessibility/<id>.json.
-# The status for the ruleset is `admission / Plan, theme:check and theme:pack` and its siblings once this has run.
+# Each theme is admitted from its own folder, as publish.yml does: a build that holds every theme of the repository compiles the slots of
+# the others in as chunks loaded on demand, and their entries count against the JavaScript budget of a theme that never ships with them.
+# The status for the ruleset is `admission (<id>) / Plan, theme:check and theme:pack` and its siblings once this has run.
 on:
   pull_request:
     branches: [main]
@@ -13,10 +15,36 @@ permissions:
   contents: read
 
 jobs:
+  themes:
+    name: Themes of the repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      ids: ${{ steps.list.outputs.ids }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: List the theme folders
+        id: list
+        run: |
+          ids="$(find themes -mindepth 2 -maxdepth 2 -name theme.json -printf '%h\n' | xargs -r -n1 basename | sort | jq -R . | jq -sc .)"
+          if [ "${ids}" = "[]" ]; then echo "::error::no theme found in themes/"; exit 1; fi
+          echo "ids=${ids}" >> "${GITHUB_OUTPUT}"
+
   admission:
+    name: admission (${{ matrix.theme }})
+    needs: themes
+    strategy:
+      fail-fast: false
+      matrix:
+        theme: ${{ fromJSON(needs.themes.outputs.ids) }}
     uses: bogd3v/micelio/.github/workflows/theme-admission.yml@v0.6.1
     with:
-      theme-dirs: themes
+      theme-dirs: themes/${{ matrix.theme }}
+      themes: '["${{ matrix.theme }}"]'
       core-ref: v0.6.1
+      artifact-prefix: admission-${{ matrix.theme }}
     permissions:
       contents: read

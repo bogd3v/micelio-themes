@@ -1,0 +1,113 @@
+/* Espora's own styling of the public hooks; the core styles everything else from the roles (ADR 0005, section 4). */
+
+/* Titles are set heavy in Bricolage Grotesque, not light and wide */
+.myc-hero-title,
+.myc-home-lede-title,
+.myc-blog-title,
+.myc-article-title {
+    font-weight: 700;
+    font-stretch: normal;
+    text-wrap: balance;
+}
+
+.myc-home-title {
+    font-weight: 600;
+    font-stretch: normal;
+}
+
+/* Eyebrows are sans labels in the color of the network */
+.myc-eyebrow,
+.myc-home-eyebrow {
+    font-family: var(--font-sans);
+    color: var(--accent);
+}
+
+/* Pills: chips and icon buttons take the round ends of the threads */
+.myc-chip {
+    border-radius: var(--radius-full);
+    font-family: var(--font-sans);
+    letter-spacing: 0.01em;
+    text-transform: none;
+}
+
+.myc-chip:hover {
+    background: var(--accent-soft);
+}
+
+.myc-iconbtn {
+    border-radius: var(--radius-full);
+}
+
+.myc-seg-group {
+    overflow: hidden;
+    border-radius: var(--radius-control);
+}
+
+.myc-kbd {
+    border-radius: var(--radius-xs);
+}
+
+/* Cards: soft corners; the hover lifts, nothing glows */
+.myc-card,
+.myc-guide-card {
+    overflow: hidden;
+    border-radius: var(--radius-card);
+}
+
+.myc-card:hover,
+.myc-card:focus-within,
+.myc-guide-card:hover {
+    box-shadow: var(--shadow-raised);
+}
+
+/* Reading blocks share the card corners */
+.myc-callout,
+.myc-code,
+.myc-author-card,
+.myc-palette-panel {
+    border-radius: var(--radius-card);
+}
+
+.myc-code {
+    overflow: hidden;
+}
+
+.myc-article-cover {
+    overflow: hidden;
+    border-radius: var(--radius-card);
+}
+
+/* The table of contents marks the current heading with the link tint */
+.myc-toc-link {
+    border-radius: var(--radius-control);
+}
+
+.myc-toc-link[aria-current] {
+    background: var(--link-soft);
+}
+
+/* The newsletter block of the home sits on the accent tint */
+.myc-subscribe {
+    border-radius: var(--radius-card);
+}
+
+/* List rows: the title takes the accent on hover */
+.myc-post-row:hover .myc-post-row-link {
+    color: var(--accent);
+}
+
+/* Motion only for people who have not asked for less (ADR 0005, section 10) */
+@media (prefers-reduced-motion: no-preference) {
+    .myc-card,
+    .myc-guide-card {
+        transition: box-shadow var(--duration-base) var(--ease-standard);
+    }
+
+    .myc-chip {
+        transition: background-color var(--duration-fast) var(--ease-standard);
+    }
+
+    .myc-post-row-link {
+        transition: color var(--duration-base) var(--ease-standard);
+    }
+}

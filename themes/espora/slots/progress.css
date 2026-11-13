@@ -1,0 +1,19 @@
+/* ThemeProgressMarker: an origin node at the head of the reading bar */
+.espora-progress-node {
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border-radius: var(--radius-full);
+    background: var(--ink);
+    box-shadow: 0 0 0 3px var(--surface);
+}
+
+@media (forced-colors: active) {
+    .espora-progress-node {
+        background: CanvasText;
+    }
+}
