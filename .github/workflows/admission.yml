@@ -5,7 +5,7 @@ name: Admission
 # with the other workflows. Baselines are read from __screenshots__/<id>/ and the accessibility record from accessibility/<id>.json.
 # Each theme is admitted from its own folder, as publish.yml does: a build that holds every theme of the repository compiles the slots of
 # the others in as chunks loaded on demand, and their entries count against the JavaScript budget of a theme that never ships with them.
-# The status for the ruleset is `admission (<id>) / Plan, theme:check and theme:pack` and its siblings once this has run.
+# The status for the ruleset is `Admission`: one verdict over every theme, so the ruleset does not name a theme.
 on:
   pull_request:
     branches: [main]
@@ -48,3 +48,23 @@ jobs:
       artifact-prefix: admission-${{ matrix.theme }}
     permissions:
       contents: read
+
+  # One name for the ruleset to require. It always runs: a skipped job counts as passed for a required check.
+  verdict:
+    name: Admission
+    needs: [themes, admission]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Every theme was admitted
+        env:
+          THEMES: ${{ needs.themes.result }}
+          ADMISSION: ${{ needs.admission.result }}
+        run: |
+          echo "themes: ${THEMES}, admission: ${ADMISSION}"
+          if [ "${THEMES}" != "success" ] || [ "${ADMISSION}" != "success" ]; then
+            echo "::error::the admission of at least one theme did not pass"
+            exit 1
+          fi
