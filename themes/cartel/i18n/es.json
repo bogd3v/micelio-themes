@@ -1,0 +1,11 @@
+{
+  "theme": {
+    "modes": {
+      "papel": "Papel",
+      "tinta": "Tinta"
+    },
+    "latest": {
+      "emptyNote": "Tiraje en preparación · Vuelve pronto"
+    }
+  }
+}

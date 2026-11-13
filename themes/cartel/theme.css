@@ -1,0 +1,445 @@
+/* Cartel's own styling of the public hooks: a two-ink poster. The core styles everything else from the roles (ADR 0005, section 4). */
+
+/* The browser's own focus ring (1px amber in Chrome) is about 2:1 on the cream paper: every ring takes the second ink (WCAG 1.4.11, 2.4.7).
+   Only its color is set, so a control the core rings elsewhere (a card, a row) keeps no ring of its own; not in forced colors, where the core's rings use Highlight */
+@media not (forced-colors) {
+    :focus-visible:not(:target) {
+        outline-color: var(--focus);
+    }
+}
+
+/* Titles are wood type: one weight and tight lines. Anton has no bold, so its face covers every weight (fonts.css) and the titles ask for 400 */
+.myc-hero-title,
+.myc-home-lede-title,
+.myc-home-title,
+.myc-blog-title,
+.myc-article-title,
+.myc-card-title,
+.myc-post-row-title,
+.myc-prose h2,
+.myc-prose h3,
+.myc-prose h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-stretch: normal;
+    text-wrap: balance;
+}
+
+/* The titles of a page and of its sections are set in capitals, like a headline; the titles of items keep their case */
+.myc-hero-title,
+.myc-home-lede-title,
+.myc-home-title,
+.myc-blog-title,
+.myc-article-title {
+    text-transform: uppercase;
+}
+
+/* The second plate prints out of register behind the largest titles */
+.myc-hero-title,
+.myc-home-lede-title,
+.myc-blog-title {
+    font-size: 56px;
+    line-height: 58px;
+    letter-spacing: var(--tracking-display-xl);
+    text-shadow: 0.045em 0.045em 0 var(--overprint);
+}
+
+.myc-article-title {
+    letter-spacing: var(--tracking-display-l);
+}
+
+.myc-home-title {
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: var(--tracking-heading-1);
+}
+
+.myc-card-title,
+.myc-post-row-title {
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: var(--tracking-heading-2);
+}
+
+.myc-card-featured .myc-card-title {
+    font-size: 32px;
+    line-height: 37px;
+}
+
+.myc-prose h2,
+.myc-prose h3,
+.myc-prose h4 {
+    letter-spacing: var(--tracking-heading-2);
+}
+
+@media (min-width: 1024px) {
+    .myc-hero-title,
+    .myc-home-lede-title {
+        font-size: 96px;
+        line-height: 94px;
+    }
+
+    .myc-blog-title {
+        font-size: 80px;
+        line-height: 80px;
+    }
+
+    .myc-home-title {
+        font-size: 48px;
+        line-height: 52px;
+    }
+
+    .myc-card-featured .myc-card-title {
+        font-size: 44px;
+        line-height: 48px;
+    }
+}
+
+/* Small print: heavy sans labels in the first ink, opened by a square of it */
+.myc-eyebrow,
+.myc-home-eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.myc-home-eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    margin-inline-end: 0.6em;
+    background: currentColor;
+}
+
+/* The header is a sheet with a ruled edge; the current page is underlined by a bar of the first ink */
+.myc-header {
+    border-bottom: 2px solid var(--ink);
+}
+
+.myc-nav-link {
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.myc-nav-link[aria-current] {
+    box-shadow: inset 0 -4px 0 var(--accent);
+}
+
+.myc-progress-bar {
+    background: var(--accent);
+}
+
+/* Buttons are stamped labels: a ruled box, capitals, and on hover the box lifts off its own impression */
+.myc-btn {
+    border-width: 2px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.myc-btn-primary {
+    border-color: var(--ink);
+}
+
+.myc-btn-primary:hover {
+    background: var(--ink);
+    box-shadow: 4px 4px 0 0 var(--accent);
+}
+
+.myc-btn-secondary {
+    border-color: var(--ink);
+}
+
+.myc-btn-secondary:hover {
+    box-shadow: 4px 4px 0 0 var(--ink);
+}
+
+.myc-btn-accent {
+    border-color: var(--accent);
+}
+
+.myc-btn-text {
+    border-bottom-width: 2px;
+    border-bottom-color: var(--ink);
+}
+
+.myc-btn-primary:hover,
+.myc-btn-secondary:hover,
+.myc-btn-accent:hover {
+    transform: translate(-2px, -2px);
+}
+
+.myc-btn:disabled {
+    transform: none;
+}
+
+/* Chips and segments are ruled boxes; a pressed one is ruled by the key plate and underlined by the first ink */
+.myc-chip {
+    border-width: 2px;
+    border-color: var(--line-strong);
+    font-family: var(--font-sans);
+    font-weight: 700;
+}
+
+.myc-chip:hover {
+    background: var(--accent-soft);
+    border-color: var(--ink);
+}
+
+.myc-chip[aria-pressed="true"],
+.myc-chip[aria-current] {
+    border-color: var(--ink);
+    box-shadow: inset 0 -4px 0 var(--accent);
+}
+
+.myc-seg-group {
+    border: 2px solid var(--ink);
+}
+
+.myc-kbd {
+    border-color: var(--line-strong);
+}
+
+/* Cards are sheets pasted on the wall: a ruled edge, and on hover the sheet lifts and shows the first ink under it */
+.myc-card,
+.myc-guide-card {
+    border: 2px solid var(--ink);
+}
+
+.myc-card:hover,
+.myc-card:focus-within,
+.myc-guide-card:hover,
+.myc-guide-card:focus-within {
+    border-color: var(--ink);
+    box-shadow: var(--shadow-raised);
+    transform: translate(-3px, -3px);
+}
+
+/* A cover on a card is printed in one ink: the photo in the key plate over a tint, and in full color once the card is picked up */
+.myc-card-media {
+    border-bottom: 2px solid var(--ink);
+    background-color: var(--accent-soft);
+}
+
+.myc-card-media img {
+    filter: grayscale(1) contrast(1.15);
+    mix-blend-mode: multiply;
+}
+
+[data-scheme="dark"] .myc-card-media img {
+    mix-blend-mode: screen;
+}
+
+.myc-card:hover .myc-card-media img,
+.myc-card:focus-within .myc-card-media img {
+    filter: none;
+    mix-blend-mode: normal;
+}
+
+.myc-card-eyebrow {
+    font-weight: 700;
+}
+
+.myc-card-arrow {
+    color: var(--accent);
+}
+
+/* The empty state is a sheet still to be cut */
+.myc-latest-empty {
+    border: 2px dashed var(--line-strong);
+}
+
+/* List rows: a rule of the key plate between rows; the title takes the first ink on hover */
+.myc-post-row {
+    border-color: var(--ink);
+}
+
+.myc-post-row:hover .myc-post-row-link {
+    color: var(--accent);
+}
+
+.myc-post-row-date {
+    font-weight: 700;
+}
+
+/* The newsletter and the fediverse blocks of the home open under a rule and a halftone that fades down the sheet */
+.myc-subscribe,
+.myc-fedi {
+    border-top: 2px solid var(--ink);
+    background-image:
+        radial-gradient(circle at center, var(--accent) 0 2.6px, transparent 3px),
+        radial-gradient(circle at center, var(--accent) 0 1.8px, transparent 2.2px),
+        radial-gradient(circle at center, var(--accent) 0 1px, transparent 1.4px);
+    background-position: 0 4px, 0 13px, 0 22px;
+    background-repeat: repeat-x;
+    background-size: 9px 9px;
+}
+
+/* Reading: ruled blocks. A callout and a code block sit on their own offset sheet */
+.myc-callout {
+    border: 2px solid var(--ink);
+    box-shadow: 5px 5px 0 0 var(--line);
+}
+
+.myc-callout-label {
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.myc-code {
+    border: 2px solid var(--ink);
+}
+
+.myc-code-head {
+    border-bottom: 2px solid var(--ink);
+}
+
+.myc-code-lang {
+    font-weight: 700;
+}
+
+/* The bar of a quotation is printed in the first ink; its width and its side stay the core's, which the align option moves */
+.myc-prose blockquote,
+blockquote.myc-quote {
+    border-color: var(--accent);
+}
+
+/* A rule around covers and figures, drawn outside the box so the media keeps the shape its ratio gives it */
+.myc-article-cover,
+.myc-fig-media {
+    box-shadow: 0 0 0 2px var(--ink);
+}
+
+.myc-fig-cap,
+.myc-credit {
+    font-weight: 500;
+}
+
+/* Links in running text are underlined by the second ink, heavier on hover */
+.myc-prose a {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.myc-prose a:hover {
+    background: var(--link-soft);
+}
+
+.myc-prose hr {
+    height: 9px;
+    border: 0;
+    background-image: radial-gradient(circle at center, var(--ink) 0 1.6px, transparent 2px);
+    background-size: 9px 9px;
+}
+
+.myc-toc-link[aria-current] {
+    background: var(--link-soft);
+    box-shadow: inset 4px 0 0 var(--link);
+}
+
+.myc-article-toc-summary {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.myc-author-card,
+.myc-comment,
+.myc-palette-panel,
+.myc-sheet-panel {
+    border: 2px solid var(--ink);
+}
+
+.myc-result-active {
+    box-shadow: inset 4px 0 0 var(--accent);
+}
+
+/* Fields are ruled boxes like the rest of the sheet */
+.myc-input,
+.myc-select {
+    border-width: 2px;
+}
+
+.myc-label {
+    font-weight: 700;
+}
+
+.myc-notice {
+    border-width: 2px;
+}
+
+/* The footer starts at a rule */
+.myc-foot {
+    border-top: 2px solid var(--ink);
+}
+
+.myc-tabbar {
+    border-top: 2px solid var(--ink);
+}
+
+.myc-tab[aria-current] {
+    color: var(--accent);
+}
+
+.myc-back-to-top {
+    border: 2px solid var(--ink);
+}
+
+/* Windows high contrast: the out-of-register plate and the one-ink covers are dropped */
+@media (forced-colors: active) {
+    .myc-hero-title,
+    .myc-home-lede-title,
+    .myc-blog-title {
+        text-shadow: none;
+    }
+
+    .myc-card-media img {
+        filter: none;
+        mix-blend-mode: normal;
+    }
+
+    .myc-subscribe,
+    .myc-fedi,
+    .myc-prose hr {
+        background-image: none;
+    }
+
+    .myc-prose hr {
+        border-top: 2px solid CanvasText;
+    }
+}
+
+/* The only motion is the press coming down, for people who have not asked for less (ADR 0005, section 10) */
+@media (prefers-reduced-motion: no-preference) {
+    .myc-card,
+    .myc-guide-card {
+        transition: transform var(--duration-base) var(--ease-emphasized), box-shadow var(--duration-base) var(--ease-standard);
+    }
+
+    .myc-btn {
+        transition: transform var(--duration-fast) var(--ease-emphasized), box-shadow var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+    }
+
+    .myc-chip {
+        transition: background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+    }
+
+    .myc-post-row-link {
+        transition: color var(--duration-base) var(--ease-standard);
+    }
+}
+
+/* Without motion the sheet stays where it is: the offset plate alone marks the hover */
+@media (prefers-reduced-motion: reduce) {
+    .myc-card:hover,
+    .myc-card:focus-within,
+    .myc-guide-card:hover,
+    .myc-guide-card:focus-within,
+    .myc-btn-primary:hover,
+    .myc-btn-secondary:hover,
+    .myc-btn-accent:hover {
+        transform: none;
+    }
+}

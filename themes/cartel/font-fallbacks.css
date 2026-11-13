@@ -1,0 +1,32 @@
+/* Local fallbacks sized to the web fonts, so the swap does not reflow text (docs/performance.md of the core).
+   Hand-tuned with the method of the core's scripts/perf/font-fallbacks.py (average advance by letter frequency, against Liberation Sans).
+   Anton is measured in capitals, because the largest titles (the ones above the fold) are set in capitals, against the bold face. */
+
+@font-face {
+    font-family: "Anton Fallback";
+    src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+    size-adjust: 68.80%;
+    ascent-override: 170.97%;
+    descent-override: 47.84%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Atkinson Hyperlegible Next Fallback";
+    font-weight: 100 549;
+    src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+    size-adjust: 100.06%;
+    ascent-override: 98.34%;
+    descent-override: 31.58%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Atkinson Hyperlegible Next Fallback";
+    font-weight: 550 900;
+    src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+    size-adjust: 99.73%;
+    ascent-override: 98.67%;
+    descent-override: 31.69%;
+    line-gap-override: 0%;
+}

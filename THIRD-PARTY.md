@@ -10,6 +10,8 @@ Material in this repository that is not under the repository's own license (AGPL
 | JetBrains Mono, The JetBrains Mono Project Authors | `themes/bogota/fonts/jetbrains-mono-latin-var.woff2` | OFL-1.1 (`themes/bogota/fonts/OFL-JetBrainsMono.txt`) |
 | Archivo, The Archivo Project Authors | `themes/espora/fonts/archivo-latin-var.woff2` | OFL-1.1 (`themes/espora/fonts/OFL-Archivo.txt`) |
 | Bricolage Grotesque, The Bricolage Grotesque Project Authors | `themes/espora/fonts/bricolage-grotesque-latin-wght.woff2` | OFL-1.1 (`themes/espora/fonts/OFL-BricolageGrotesque.txt`) |
+| Anton, The Anton Project Authors | `themes/cartel/fonts/anton-latin-400.woff2` | OFL-1.1 (`themes/cartel/fonts/OFL-Anton.txt`) |
+| Atkinson Hyperlegible Next, The Atkinson Hyperlegible Next Project Authors | `themes/cartel/fonts/atkinson-hyperlegible-next-latin-wght.woff2` | OFL-1.1 (`themes/cartel/fonts/OFL-AtkinsonHyperlegibleNext.txt`) |
 
 ## Images
 

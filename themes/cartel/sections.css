@@ -1,0 +1,140 @@
+/* Cartel's page sections: wood-type titles, ruled sheets, figures in the first ink. Loaded only by pages that render sections (ADR 0005, section 4). */
+
+.myc-section-title,
+.myc-section-item-title,
+.myc-section-question {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-stretch: normal;
+    text-wrap: balance;
+}
+
+/* The title of a section is a headline, in capitals; the titles of its items keep their case */
+.myc-section-title {
+    text-transform: uppercase;
+}
+
+/* On a phone the headline is set one size down, so a title of a few words stays on one line; the hero of a page keeps one size more */
+@media (max-width: 767.98px) {
+    .myc-section-title {
+        font: var(--text-heading-2);
+        letter-spacing: var(--tracking-heading-2);
+    }
+
+    [data-section="hero"] .myc-section-title {
+        font: var(--text-heading-1);
+        letter-spacing: var(--tracking-heading-1);
+    }
+}
+
+.myc-section-item-title,
+.myc-section-question {
+    letter-spacing: var(--tracking-heading-3);
+}
+
+/* The hero of a page is a poster headline, with the second plate out of register */
+[data-section="hero"] .myc-section-title {
+    text-shadow: 0.045em 0.045em 0 var(--overprint);
+}
+
+@media (min-width: 1024px) {
+    [data-section="hero"] .myc-section-title {
+        font: var(--text-display-xl);
+        letter-spacing: var(--tracking-display-xl);
+    }
+}
+
+/* Items that are cards are ruled sheets; the ones that link lift and show the first ink under them */
+[data-section="feature-grid"] .myc-section-item,
+[data-section="testimonials"] .myc-section-item,
+[data-section="pricing"][data-variant="cards"] .myc-section-item,
+[data-section="stats"][data-variant="cards"] .myc-section-item,
+[data-section="post-list"][data-variant="cards"] .myc-section-item {
+    border: 2px solid var(--ink);
+}
+
+[data-section="feature-grid"] .myc-section-item:hover,
+[data-section="pricing"][data-variant="cards"] .myc-section-item:hover,
+[data-section="post-list"][data-variant="cards"] .myc-section-item:hover,
+[data-section="post-list"][data-variant="cards"] .myc-section-item:focus-within {
+    box-shadow: var(--shadow-raised);
+}
+
+/* A feature icon is knocked out of a square of the key plate */
+.myc-section-icon {
+    background: var(--ink);
+    color: var(--on-ink);
+}
+
+/* Media is framed by a rule, drawn outside the box so the media keeps the shape its ratio gives it */
+.myc-section-media {
+    box-shadow: 0 0 0 2px var(--ink);
+}
+
+/* Figures are the loudest thing on the sheet */
+.myc-section-stat-value {
+    font-family: var(--font-display);
+    font-weight: 400;
+    color: var(--accent);
+    text-shadow: 0.04em 0.04em 0 var(--overprint);
+}
+
+.myc-section-stat-label {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* A band with tone accent keeps the tint the core gives it and is ruled above and below (a block option, contract 2.1) */
+.myc-section[data-section="stats"][data-tone="accent"],
+.myc-section[data-section="cta"][data-tone="accent"],
+.myc-section[data-section="newsletter"][data-tone="accent"],
+.myc-section[data-section="hero"][data-tone="accent"] {
+    border-block: 2px solid var(--ink);
+}
+
+/* Quotations are set large, behind a bar of the first ink */
+.myc-section-quote {
+    border-inline-start: 8px solid var(--accent);
+    padding-inline-start: var(--space-6);
+}
+
+.myc-section-author {
+    font-weight: 700;
+}
+
+/* The recommended plan is the one printed with the extra ink */
+.myc-section-plan-recommended {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-raised);
+}
+
+.myc-section-plan-price {
+    font-family: var(--font-display);
+    font-weight: 400;
+}
+
+/* Questions open under a rule of the key plate */
+[data-section="faq"] .myc-section-item {
+    border-color: var(--ink);
+}
+
+/* The card variants of cta and newsletter are one flyer on a sheet of the first ink */
+[data-section="cta"][data-variant="card"] .myc-section-inner,
+[data-section="newsletter"][data-variant="card"] .myc-section-inner {
+    border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0 0 var(--accent);
+}
+
+@media (forced-colors: active) {
+    [data-section="hero"] .myc-section-title,
+    .myc-section-stat-value {
+        text-shadow: none;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .myc-section-item {
+        transition: box-shadow var(--duration-base) var(--ease-standard);
+    }
+}

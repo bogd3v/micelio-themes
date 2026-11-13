@@ -1,0 +1,65 @@
+/* ThemeMark: the two inks and the registration cross, then the site name in wood type */
+.cartel-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--ink);
+    line-height: 1;
+}
+
+.cartel-mark-glyph {
+    display: block;
+    flex: none;
+    isolation: isolate;
+}
+
+.cartel-mark-second {
+    fill: var(--overprint);
+}
+
+.cartel-mark-first {
+    fill: var(--accent);
+    mix-blend-mode: multiply;
+}
+
+[data-scheme="dark"] .cartel-mark-first {
+    mix-blend-mode: screen;
+}
+
+.cartel-mark-cross {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3;
+}
+
+.cartel-mark-name {
+    font: var(--text-heading-2);
+    letter-spacing: var(--tracking-heading-2);
+    text-transform: uppercase;
+}
+
+.cartel-mark-footer {
+    gap: var(--space-4);
+}
+
+.cartel-mark-footer .cartel-mark-name {
+    font: var(--text-heading-1);
+    letter-spacing: var(--tracking-heading-1);
+}
+
+/* At 320px the header row is wider than the page: the name gives way before the buttons do (WCAG 1.4.10) */
+@media (max-width: 359.98px) {
+    .cartel-mark-header .cartel-mark-name {
+        font: var(--text-heading-3);
+    }
+}
+
+@media (forced-colors: active) {
+    .cartel-mark-first,
+    .cartel-mark-second {
+        fill: none;
+        stroke: CanvasText;
+        stroke-width: 3;
+        mix-blend-mode: normal;
+    }
+}

@@ -1,0 +1,19 @@
+/* ThemeProgressMarker: a block of the first ink at the head of the reading bar, ruled by the key plate */
+.cartel-progress-block {
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    display: block;
+    box-sizing: border-box;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border: 2px solid var(--ink);
+    background: var(--accent);
+}
+
+@media (forced-colors: active) {
+    .cartel-progress-block {
+        background: CanvasText;
+    }
+}

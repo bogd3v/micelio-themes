@@ -1,0 +1,33 @@
+/* ThemeIllustration: two plates. The category's color arrives as the color of the drawing */
+.cartel-print {
+    display: block;
+    isolation: isolate;
+}
+
+.cartel-print-color {
+    fill: currentColor;
+}
+
+.cartel-print-key {
+    fill: var(--ink);
+}
+
+/* Where the plates meet the inks mix: darker on paper, lighter on the midnight stock */
+.cartel-print-plate {
+    mix-blend-mode: multiply;
+}
+
+[data-scheme="dark"] .cartel-print-plate {
+    mix-blend-mode: screen;
+}
+
+@media (forced-colors: active) {
+    .cartel-print-color,
+    .cartel-print-key {
+        fill: CanvasText;
+    }
+
+    .cartel-print-plate {
+        mix-blend-mode: normal;
+    }
+}

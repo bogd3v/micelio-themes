@@ -1,0 +1,641 @@
+{
+  "$schema": "../theme.schema.json",
+  "contract": "2.1",
+  "id": "cartel",
+  "name": "Cartel",
+  "version": "0.1.0",
+  "license": "AGPL-3.0-only",
+  "modes": [
+    {
+      "id": "papel",
+      "scheme": "light",
+      "name": "Papel"
+    },
+    {
+      "id": "tinta",
+      "scheme": "dark",
+      "name": "Tinta"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Anton",
+      "file": "anton-latin-400.woff2",
+      "preload": true
+    },
+    {
+      "family": "Atkinson Hyperlegible Next",
+      "file": "atkinson-hyperlegible-next-latin-wght.woff2",
+      "preload": true
+    }
+  ],
+  "images": {
+    "favicon": "favicon.svg"
+  },
+  "layout": {
+    "header": "bar",
+    "home": "showcase",
+    "postList": "grid",
+    "article": "centered",
+    "footer": "columns"
+  },
+  "color": {
+    "note": "Two print runs. Papel: cream stock, a warm black key plate and two spot inks, vermilion and blue. Tinta: midnight stock, bone white and two fluorescent inks, pink and yellow. Every other color is a tint of those.",
+    "tokens": [
+      {
+        "name": "crema",
+        "value": "#f2ead8",
+        "usage": "Primitive: the paper stock of the light run. Never pure white."
+      },
+      {
+        "name": "negro",
+        "value": "#1a1614",
+        "usage": "Primitive: the warm black of the key plate."
+      },
+      {
+        "name": "bermellon",
+        "value": "#b3261a",
+        "usage": "Primitive: the vermilion ink of the light run, deep enough for text on every paper."
+      },
+      {
+        "name": "azul",
+        "value": "#1d3fa8",
+        "usage": "Primitive: the printer's blue of the light run."
+      },
+      {
+        "name": "medianoche",
+        "value": "#14173a",
+        "usage": "Primitive: the midnight stock of the dark run."
+      },
+      {
+        "name": "hueso",
+        "value": "#f4eedd",
+        "usage": "Primitive: the bone white ink of the dark run."
+      },
+      {
+        "name": "rosa",
+        "value": "#ff6fae",
+        "usage": "Primitive: fluorescent pink. Only on medianoche: it fails as text on a light paper."
+      },
+      {
+        "name": "amarillo",
+        "value": "#f5e642",
+        "usage": "Primitive: fluorescent yellow. Only on medianoche."
+      },
+      {
+        "name": "overprint",
+        "value": {
+          "papel": "{azul}",
+          "tinta": "{amarillo}"
+        },
+        "usage": "The second ink of the theme's art: the plate printed out of register behind titles, and the overlapping shapes of the slots."
+      },
+      {
+        "name": "surface",
+        "value": {
+          "papel": "{crema}",
+          "tinta": "{medianoche}"
+        },
+        "usage": "Page background: the paper of each run."
+      },
+      {
+        "name": "surface-raised",
+        "value": {
+          "papel": "#fbf6e9",
+          "tinta": "#1e2251"
+        },
+        "usage": "Cards, menus, fields and the mobile tab bar: a lighter sheet pasted on the paper."
+      },
+      {
+        "name": "surface-sunken",
+        "value": {
+          "papel": "#e6dcc4",
+          "tinta": "#0c0e27"
+        },
+        "usage": "Code blocks, figures and card covers: a heavier stock."
+      },
+      {
+        "name": "line",
+        "value": {
+          "papel": "#d3c7a8",
+          "tinta": "#2d3270"
+        },
+        "usage": "Fold lines and separators. Decorative: it does not delimit controls."
+      },
+      {
+        "name": "line-strong",
+        "value": {
+          "papel": "#7a6d58",
+          "tinta": "#8286c0"
+        },
+        "usage": "Control borders (fields, secondary button)."
+      },
+      {
+        "name": "ink",
+        "value": {
+          "papel": "{negro}",
+          "tinta": "{hueso}"
+        },
+        "usage": "Main text, the borders of cards and the fill of the primary button: the key plate."
+      },
+      {
+        "name": "ink-muted",
+        "value": {
+          "papel": "#574d42",
+          "tinta": "#b9b6d2"
+        },
+        "usage": "Secondary text: excerpts, metadata, dates, help."
+      },
+      {
+        "name": "on-ink",
+        "value": {
+          "papel": "{crema}",
+          "tinta": "{medianoche}"
+        },
+        "usage": "Text on an ink fill."
+      },
+      {
+        "name": "accent",
+        "value": {
+          "papel": "{bermellon}",
+          "tinta": "{rosa}"
+        },
+        "usage": "The first spot ink: accent button, eyebrows, active states."
+      },
+      {
+        "name": "accent-soft",
+        "value": {
+          "papel": "#f3d5c6",
+          "tinta": "#3a1c4a"
+        },
+        "usage": "A light tint of the first ink: behind accent text, and the surface of a block with tone accent."
+      },
+      {
+        "name": "accent-hover",
+        "value": {
+          "papel": "#8f1c12",
+          "tinta": "#ff94c2"
+        },
+        "usage": "Accent on hover: a heavier pass in papel, a brighter one in tinta."
+      },
+      {
+        "name": "on-accent",
+        "value": {
+          "papel": "#fbf6e9",
+          "tinta": "{medianoche}"
+        },
+        "usage": "Text and icons on accent and accent-hover."
+      },
+      {
+        "name": "link",
+        "value": {
+          "papel": "{azul}",
+          "tinta": "{amarillo}"
+        },
+        "usage": "Links in running text: the second spot ink."
+      },
+      {
+        "name": "link-soft",
+        "value": {
+          "papel": "#d9dfef",
+          "tinta": "#2c2f3f"
+        },
+        "usage": "Tinted background of links, highlights and active items."
+      },
+      {
+        "name": "focus",
+        "value": {
+          "papel": "{azul}",
+          "tinta": "{amarillo}"
+        },
+        "usage": "Focus ring: 2px solid with a 2px offset, in the second ink so it shows on accent fills too."
+      },
+      {
+        "name": "success",
+        "value": {
+          "papel": "#1c6442",
+          "tinta": "#6fe0ae"
+        },
+        "usage": "Success state. Always with an icon and a word."
+      },
+      {
+        "name": "success-soft",
+        "value": {
+          "papel": "#d3e6d4",
+          "tinta": "#16363a"
+        },
+        "usage": "Background of a success message."
+      },
+      {
+        "name": "warning",
+        "value": {
+          "papel": "#7a5200",
+          "tinta": "#ffb866"
+        },
+        "usage": "Warning state."
+      },
+      {
+        "name": "warning-soft",
+        "value": {
+          "papel": "#f2e0b0",
+          "tinta": "#3b2d2c"
+        },
+        "usage": "Background of a warning message."
+      },
+      {
+        "name": "danger",
+        "value": {
+          "papel": "#a3211c",
+          "tinta": "#ff8f85"
+        },
+        "usage": "Errors and destructive actions. Always with an icon and a word: it is close to the accent."
+      },
+      {
+        "name": "danger-soft",
+        "value": {
+          "papel": "#f5d3cb",
+          "tinta": "#40202f"
+        },
+        "usage": "Background of an error message."
+      },
+      {
+        "name": "info",
+        "value": {
+          "papel": "{azul}",
+          "tinta": "#8fc4ff"
+        },
+        "usage": "Informative state."
+      },
+      {
+        "name": "info-soft",
+        "value": {
+          "papel": "#d9dfef",
+          "tinta": "#1c2d5c"
+        },
+        "usage": "Background of an informative message."
+      },
+      {
+        "name": "category-1",
+        "value": "{accent}",
+        "usage": "Category 1: the first ink (vermilion, fluorescent pink)."
+      },
+      {
+        "name": "category-1-soft",
+        "value": "{accent-soft}",
+        "usage": "Background behind category 1 text."
+      },
+      {
+        "name": "category-2",
+        "value": {
+          "papel": "{azul}",
+          "tinta": "#8fc4ff"
+        },
+        "usage": "Category 2: blue."
+      },
+      {
+        "name": "category-2-soft",
+        "value": {
+          "papel": "#d9dfef",
+          "tinta": "#1c2d5c"
+        },
+        "usage": "Background behind category 2 text."
+      },
+      {
+        "name": "category-3",
+        "value": {
+          "papel": "#1c6442",
+          "tinta": "#6fe0ae"
+        },
+        "usage": "Category 3: green."
+      },
+      {
+        "name": "category-3-soft",
+        "value": {
+          "papel": "#d3e6d4",
+          "tinta": "#16363a"
+        },
+        "usage": "Background behind category 3 text."
+      },
+      {
+        "name": "category-4",
+        "value": {
+          "papel": "#7a5200",
+          "tinta": "#ffb866"
+        },
+        "usage": "Category 4: ochre, orange."
+      },
+      {
+        "name": "category-4-soft",
+        "value": {
+          "papel": "#f2e0b0",
+          "tinta": "#3b2d2c"
+        },
+        "usage": "Background behind category 4 text."
+      },
+      {
+        "name": "category-5",
+        "value": {
+          "papel": "#6a3294",
+          "tinta": "#cfa5ff"
+        },
+        "usage": "Category 5: violet."
+      },
+      {
+        "name": "category-5-soft",
+        "value": {
+          "papel": "#e6d8ee",
+          "tinta": "#30235a"
+        },
+        "usage": "Background behind category 5 text."
+      },
+      {
+        "name": "code-ink",
+        "value": "{ink}",
+        "usage": "Code text, on surface-sunken."
+      },
+      {
+        "name": "code-muted",
+        "value": "{ink-muted}",
+        "usage": "Comments and punctuation in code."
+      },
+      {
+        "name": "code-keyword",
+        "value": "{accent}",
+        "usage": "Keywords in code."
+      },
+      {
+        "name": "code-string",
+        "value": "{category-3}",
+        "usage": "Strings in code."
+      },
+      {
+        "name": "code-number",
+        "value": "{category-4}",
+        "usage": "Numbers in code."
+      },
+      {
+        "name": "code-function",
+        "value": "{link}",
+        "usage": "Function names in code."
+      }
+    ]
+  },
+  "shadow": {
+    "note": "Nothing glows and nothing blurs: a shadow is a plate printed out of register, and a ring is a rule of the second ink.",
+    "tokens": [
+      {
+        "name": "shadow-raised",
+        "value": {
+          "papel": "6px 6px 0 0 #b3261a",
+          "tinta": "6px 6px 0 0 #ff6fae"
+        },
+        "usage": "Raised cards: a second sheet of the first ink, offset and never blurred. Ink does not blur."
+      },
+      {
+        "name": "shadow-overlay",
+        "value": {
+          "papel": "10px 10px 0 0 #1a1614",
+          "tinta": "10px 10px 0 0 #05061a"
+        },
+        "usage": "Floating controls over content: a hard offset sheet."
+      },
+      {
+        "name": "glow-accent",
+        "value": {
+          "papel": "4px 4px 0 0 #1a1614",
+          "tinta": "4px 4px 0 0 #f5e642"
+        },
+        "usage": "The accent button on hover: the key plate shows behind it, out of register."
+      },
+      {
+        "name": "glow-link",
+        "value": {
+          "papel": "0 0 0 3px #1d3fa8",
+          "tinta": "0 0 0 3px #f5e642"
+        },
+        "usage": "A hard ring of the second ink around a field that has the focus and around a tile under the pointer. The core gives comment fields no other focus indicator, so this is never none."
+      }
+    ]
+  },
+  "spacing": {
+    "note": "4px base.",
+    "tokens": [
+      {
+        "name": "space-1",
+        "value": "4px",
+        "usage": "Base 4px."
+      },
+      {
+        "name": "space-2",
+        "value": "8px"
+      },
+      {
+        "name": "space-3",
+        "value": "12px"
+      },
+      {
+        "name": "space-4",
+        "value": "16px"
+      },
+      {
+        "name": "space-6",
+        "value": "24px"
+      },
+      {
+        "name": "space-8",
+        "value": "32px"
+      },
+      {
+        "name": "space-12",
+        "value": "48px"
+      },
+      {
+        "name": "space-section",
+        "value": "112px",
+        "usage": "Padding between page sections."
+      },
+      {
+        "name": "space-gutter",
+        "value": "{space-8}",
+        "usage": "Gap of card grids."
+      },
+      {
+        "name": "space-inline",
+        "value": "20px",
+        "usage": "Side margin of the page; from 768px it centers the container.",
+        "at": {
+          "768px": "max(clamp(24px, 8vw, 120px), calc((100% - {container}) / 2))"
+        }
+      }
+    ]
+  },
+  "radius": {
+    "note": "Cut paper has square corners. Only the dots are round.",
+    "tokens": [
+      {
+        "name": "radius-xs",
+        "value": "0px",
+        "usage": "Tag marks, kbd and inline code: square."
+      },
+      {
+        "name": "radius-control",
+        "value": "0px",
+        "usage": "Buttons and fields."
+      },
+      {
+        "name": "radius-card",
+        "value": "0px",
+        "usage": "Cards and panels."
+      },
+      {
+        "name": "radius-full",
+        "value": "9999px",
+        "usage": "Avatars and the dots of the halftone."
+      }
+    ]
+  },
+  "size": {
+    "tokens": [
+      {
+        "name": "container",
+        "value": "1160px",
+        "usage": "Maximum width of the page."
+      },
+      {
+        "name": "measure",
+        "value": "66ch",
+        "usage": "Maximum width of a reading line."
+      },
+      {
+        "name": "nav-height",
+        "value": "72px",
+        "usage": "Height of the header's main row in the bar layout."
+      }
+    ]
+  },
+  "motion": {
+    "note": "A poster does not move. The only motion is the press coming down: short and firm, under prefers-reduced-motion: no-preference.",
+    "tokens": [
+      {
+        "name": "duration-fast",
+        "value": "120ms"
+      },
+      {
+        "name": "duration-base",
+        "value": "180ms"
+      },
+      {
+        "name": "duration-slow",
+        "value": "360ms"
+      },
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.2, 0, 0, 1)"
+      },
+      {
+        "name": "ease-emphasized",
+        "value": "cubic-bezier(0.3, 1.4, 0.5, 1)",
+        "usage": "A small overshoot, like a stamp landing."
+      }
+    ]
+  },
+  "type": {
+    "families": {
+      "display": "\"Anton\", \"Anton Fallback\", \"Impact\", \"Haettenschweiler\", \"Arial Narrow\", sans-serif",
+      "sans": "\"Atkinson Hyperlegible Next\", \"Atkinson Hyperlegible Next Fallback\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "mono": "ui-monospace, \"SF Mono\", Menlo, Consolas, \"Liberation Mono\", monospace"
+    },
+    "groups": [
+      {
+        "name": "Display",
+        "family": "display",
+        "styles": [
+          {
+            "name": "display-xl",
+            "fontSize": "84px",
+            "lineHeight": "88px",
+            "fontWeight": 400,
+            "letterSpacing": "0.005em"
+          },
+          {
+            "name": "display-l",
+            "fontSize": "56px",
+            "lineHeight": "60px",
+            "fontWeight": 400,
+            "letterSpacing": "0.005em"
+          },
+          {
+            "name": "heading-1",
+            "fontSize": "40px",
+            "lineHeight": "46px",
+            "fontWeight": 400,
+            "letterSpacing": "0.01em"
+          },
+          {
+            "name": "heading-2",
+            "fontSize": "28px",
+            "lineHeight": "34px",
+            "fontWeight": 400,
+            "letterSpacing": "0.015em"
+          },
+          {
+            "name": "heading-3",
+            "fontSize": "22px",
+            "lineHeight": "28px",
+            "fontWeight": 400,
+            "letterSpacing": "0.02em"
+          }
+        ]
+      },
+      {
+        "name": "Text",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "body-l",
+            "fontSize": "21px",
+            "lineHeight": "32px",
+            "fontWeight": 400
+          },
+          {
+            "name": "body",
+            "fontSize": "18px",
+            "lineHeight": "29px",
+            "fontWeight": 400
+          },
+          {
+            "name": "body-s",
+            "fontSize": "15px",
+            "lineHeight": "24px",
+            "fontWeight": 400
+          },
+          {
+            "name": "eyebrow",
+            "fontSize": "13px",
+            "lineHeight": "18px",
+            "fontWeight": 700,
+            "letterSpacing": "0.12em"
+          },
+          {
+            "name": "meta",
+            "fontSize": "14px",
+            "lineHeight": "20px",
+            "fontWeight": 400
+          }
+        ]
+      },
+      {
+        "name": "Mono",
+        "family": "mono",
+        "styles": [
+          {
+            "name": "code",
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": 400
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "version": "0.1.0",
+  "core": "v0.6.1",
+  "date": "2026-11-13",
+  "by": "Alejandro Ramirez Garcia",
+  "method": "micelio v0.6.1 (337fb2c) with this repository's themes/cartel, built with MICELIO_SPECIMEN=1 and served against the mock Strapi, in Playwright 1.63.0 with its Chromium only (nothing was run in Firefox or WebKit, and not in the Playwright image of CI). The 16 lines other than screen-reader.names and screen-reader.announcements were run by an agent (Claude) with Playwright scripts, not by a person and not with a screen reader, at the maintainer's request: 6 pages (home, blog, article, about, specimen, Spanish article) x papel/tinta x 1280/390 px x notice shown/dismissed = 48 runs and 4632 Tab stops, plus forced colors (24 runs, 2184 stops), 200 % zoom, 320 px, WCAG 1.4.12 CSS and reduced motion by emulation. The focus indicator is measured as the pixels around a stop that differ by 3:1 or more with and without focus. The images of the mock's CDN were blocked, so covers and slides were empty boxes. A first pass found two failures of the theme, fixed before this run: comment fields had no focus indicator (glow-link was none) and Chrome's own 1px amber ring was about 2:1 on the cream paper of papel. The two screen-reader lines are a person's and were not run.",
+  "lines": {
+    "keyboard.operable": {
+      "result": "pass",
+      "note": "48 runs, 4632 Tab stops: every visible link, button, field, select and summary is a Tab stop. Operated with the keyboard: the mode switch both ways with Enter and Space (28 of 28), filter chips with Space (24 of 24), details with Enter and Space (24 of 24), text fields (40 of 40), and the slider's next button, arrow keys and dots on the Spanish article. The Mermaid sources of the specimen are replaced by their diagrams, which are the stops. Once, on the Spanish article (tinta, 1280 px, notice dismissed), the focus dropped to the page while on a slider dot and the next Tab went on from there."
+    },
+    "keyboard.order": {
+      "result": "fail",
+      "cause": "core",
+      "issue": "https://github.com/bogd3v/micelio/issues/792",
+      "note": "Core markup at v0.6.1, the same in every run and mode at 1280 px: on home and the specimen the fediverse widget's 'mastodon.social' comes after the server picker and 'Copy code' after the newsletter's Subscribe; on About the code block comes before the 'search' link above it and 'Buy me a coffee' before 'LinkedIn'. WCAG 2.4.3. The issue is closed, and its fix is not in v0.6.1, the core this theme is pinned to. Accepted as in Bogotá's record: the blog sidebar after the list and its pagination, and the footer read column by column. The Back to top button was not found out of order. Nothing of Cartel changes the order: its slots hold no control, and the Tab order is the DOM order (no positive tabindex)."
+    },
+    "keyboard.focus-visible": {
+      "result": "pass",
+      "note": "4632 stops: 4616 change 20 pixels or more by 3:1, 4626 change at least one. Under 20: the image links of the specimen's logo cloud in tinta (12 pixels, 8 stops; a 1px ring in the focus colour), the first row link of the specimen's list at 1280 px in one notice state per mode (0; the other row and log links measure their ring on the row, and focus-visible.spec.ts of the core passes for Cartel), and on the Spanish article in papel at 1280 px the slider dots (0 to 8, 4 stops: the core's white ring over a slide that was an empty cream box here, with no image), one 'Run the code' button and one comment link (0, once each, not in the other runs). Every ring takes the focus role (theme.css): Chrome's amber ring is about 2:1 on papel. Comment fields show a 3px ring of the second ink (glow-link)."
+    },
+    "keyboard.focus-not-hidden": {
+      "result": "pass",
+      "note": "No Tab stop of the 48 runs is hidden whole: 0 of 4632 stops have no visible sample point out of 15. Fewer than half visible, 16 stops: the second topic card of the home guide at 390 px (3 of 15: it is in a horizontal scroller), three chips of the specimen's filter row at 390 px, and 'Copy code' on the Spanish article at 390 px (6 or 7 of 15, under the core's Back to top button). focus-not-obscured.spec.ts and notice-room.spec.ts of the core pass for Cartel."
+    },
+    "keyboard.skip-link": {
+      "result": "pass",
+      "note": "All 48 runs: the first Tab stop is the skip link, Enter moves the focus to <main> and the next Tab lands inside it; also with the notice shown."
+    },
+    "keyboard.overlays": {
+      "result": "pass",
+      "note": "160 triggers over the 48 runs (the search palette from the header and from the tab bar, the menu sheet at 390 px, and Ctrl+K): each opens with the keyboard with the focus inside, keeps it inside over 25 Tabs, closes with Escape and returns the focus to its trigger. The account menu was not opened (the mock has no signed-in user)."
+    },
+    "screen-reader.landmarks": {
+      "result": "pass",
+      "note": "Every page, mode and width: one main, one banner, one contentinfo, and every nav has a name of its own. From the DOM and axe (no violation in the theme suite), not with a screen reader."
+    },
+    "screen-reader.headings": {
+      "result": "pass",
+      "note": "All 48 runs: one level-1 heading and no skipped level (on the specimen the copies inside its frames read as level 4). That the heading list reads as an outline was not judged by a person. Cartel sets the titles of pages and sections in capitals with text-transform; the text in the DOM keeps its case."
+    },
+    "screen-reader.names": {
+      "result": "not-verified",
+      "note": "A person's line: not run. Axe finds no control without a name in the theme suite, and ThemeMark's site name is part of the brand link's name; nobody listened to the names with a screen reader."
+    },
+    "screen-reader.announcements": {
+      "result": "not-verified",
+      "note": "A person's line: not run with a screen reader."
+    },
+    "screen-reader.language": {
+      "result": "fail",
+      "cause": "core",
+      "issue": "https://github.com/bogd3v/micelio/issues/788",
+      "note": "On the Spanish article (/es/blog/guia-vue-composables) the English titles of the reference list have no lang attribute at v0.6.1. WCAG 3.1.2. The issue is closed, and its fix is not in v0.6.1, the core this theme is pinned to. The html lang is right on every page (en, and es on the Spanish article) and the language switch buttons carry lang. Cartel adds no text of its own outside its i18n files."
+    },
+    "zoom.200": {
+      "result": "pass",
+      "note": "640x400 at devicePixelRatio 2 (200 % of 1280), every page and mode, notice shown and dismissed (24 runs): scrollWidth equals clientWidth, nothing is past the edge outside a scroller, and the only text an overflow box clips is hidden on purpose (the myc-sr labels and the route announcer)."
+    },
+    "zoom.reflow-320": {
+      "result": "pass",
+      "note": "At 320 px every page and mode (12 runs) has scrollWidth 320 and nothing past the edge outside a scroller. reflow.spec.ts of the core passes for Cartel. At that width the site name in the header is set one size down (mark.css)."
+    },
+    "zoom.text-spacing": {
+      "result": "pass",
+      "note": "WCAG 1.4.12 CSS injected (line height 1.5, letter spacing 0.12 em, word spacing 0.16 em, paragraph margin 2 em) on all 48 runs: no horizontal overflow, nothing past the edge outside a scroller and no newly clipped text. Automatic detection, not a full manual read; overlapping text was not looked for by eye."
+    },
+    "motion.reduced": {
+      "result": "pass",
+      "note": "prefers-reduced-motion: reduce on every page and mode at 1280 and 390 px (24 runs): document.getAnimations() has nothing running or pending after load, while scrolling top to bottom, or while a card, a topic card and a primary button are hovered, which is where Cartel moves. Control with motion allowed: 646 animations seen, up to 24 on hover. The reduced projects of the theme suite pass. With reduced motion the hover keeps the offset plate and drops the shift."
+    },
+    "motion.forced-colors": {
+      "result": "not-verified",
+      "note": "forcedColors: active in Chromium, 24 runs and 2184 Tab stops: every stop shows an indicator; all 308 buttons, 60 fields and 304 chips keep a border; pressed and unpressed switches and chips differ; Cartel's out-of-register text-shadow and the one-ink filter of card covers are off, and its slots draw in CanvasText. Not verified, because by eye in this emulation the label of a pressed chip and of a pressed segment is drawn as a solid box (the core's Highlight and HighlightText rule; the same with the theme's stylesheet removed): it needs a look on a real high-contrast system. Nothing was run in Firefox. Not judged by eye on every page: text legibility and information by colour alone."
+    },
+    "pointer.target-size": {
+      "result": "pass",
+      "note": "Axe (wcag22aa, target-size): no violation in the theme suite. Own check of WCAG 2.5.8 over 4312 links, buttons, fields and summaries in the 48 runs: the undersized targets with another target inside their 24 px circle are links inside a sentence, which are exempt; a footer social link counted against the privacy notice's link, which floats over the footer while the notice shows, is not a neighbour on the page. The slider dots are 40 and 24 px wide and 4 px tall, 8 px apart, as in the core."
+    },
+    "pointer.dragging": {
+      "result": "pass",
+      "note": "Spanish article with the slider (both modes, 1280 and 390 px): the next button (44x44 px) moves it with Enter, the arrow keys move it back, the dots are buttons and move it; nothing is draggable. Cartel adds nothing that is dragged or swiped."
+    }
+  }
+}
