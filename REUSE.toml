@@ -42,6 +42,12 @@ path = ["themes/cartel/fonts/atkinson-hyperlegible-next-latin-wght.woff2", "them
 SPDX-FileCopyrightText = "The Atkinson Hyperlegible Next Project Authors"
 SPDX-License-Identifier = "OFL-1.1"
 
+# Gaceta Serif: Source Serif 4 subset, instanced and renamed (Reserved Font Name 'Source')
+[[annotations]]
+path = ["themes/gaceta/fonts/gaceta-serif-latin-wght.woff2", "themes/gaceta/fonts/gaceta-serif-latin-italic-400.woff2", "themes/gaceta/fonts/OFL-SourceSerif4.txt"]
+SPDX-FileCopyrightText = "2014-2023 Adobe"
+SPDX-License-Identifier = "OFL-1.1"
+
 # Photo of the Sumapaz páramo by Danielfjio (Wikimedia Commons), cropped and color graded
 [[annotations]]
 path = "themes/bogota/images/hero/sumapaz-*.jpg"

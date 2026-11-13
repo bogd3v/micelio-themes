@@ -1,0 +1,18 @@
+/* ThemeProgressMarker: a manicule of the stamp ink pointing at what is left to read */
+.gaceta-manicule {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    display: block;
+    width: 22px;
+    height: 11px;
+    margin-top: -5.5px;
+    margin-right: -4px;
+    fill: var(--accent);
+}
+
+@media (forced-colors: active) {
+    .gaceta-manicule {
+        fill: CanvasText;
+    }
+}

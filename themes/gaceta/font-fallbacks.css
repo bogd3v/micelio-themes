@@ -1,0 +1,34 @@
+/* Local fallbacks sized to the web fonts, so the swap does not reflow text (docs/performance.md of the core).
+   Hand-tuned with the method of the core's scripts/perf/font-fallbacks.py (average advance by letter frequency),
+   against Liberation Serif, which shares Times New Roman's advance widths. One face per weight range and one for the italic. */
+
+@font-face {
+    font-family: "Gaceta Serif Fallback";
+    font-weight: 100 549;
+    src: local("Times New Roman"), local("TimesNewRomanPSMT"), local("Liberation Serif"), local("Tinos");
+    size-adjust: 111.58%;
+    ascent-override: 92.85%;
+    descent-override: 30.02%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Gaceta Serif Fallback";
+    font-weight: 550 900;
+    src: local("Times New Roman Bold"), local("TimesNewRomanPS-BoldMT"), local("Liberation Serif Bold"), local("Tinos Bold");
+    size-adjust: 107.20%;
+    ascent-override: 96.64%;
+    descent-override: 31.25%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Gaceta Serif Fallback";
+    font-weight: 100 900;
+    font-style: italic;
+    src: local("Times New Roman Italic"), local("TimesNewRomanPS-ItalicMT"), local("Liberation Serif Italic"), local("Tinos Italic");
+    size-adjust: 104.48%;
+    ascent-override: 99.16%;
+    descent-override: 32.06%;
+    line-gap-override: 0%;
+}

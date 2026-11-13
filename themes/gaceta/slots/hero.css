@@ -1,0 +1,31 @@
+/* ThemeHero: the page fills the box the core gives it (the root keeps the core's display, which hides the compact art on wide screens);
+   rules in the key plate, type in half pressure, the rosette in the stamp ink */
+.gaceta-hero {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: var(--ink);
+}
+
+.gaceta-hero-rules {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 1.5;
+}
+
+.gaceta-hero-type {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 3;
+}
+
+.gaceta-hero-orn {
+    color: var(--accent);
+}
+
+@media (forced-colors: active) {
+    .gaceta-hero-rules,
+    .gaceta-hero-type {
+        stroke: CanvasText;
+    }
+}

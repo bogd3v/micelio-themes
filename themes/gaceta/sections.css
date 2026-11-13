@@ -1,0 +1,167 @@
+/* Gaceta's page sections: every block is a part of a newspaper page. Loaded only by pages that render sections */
+
+/* A section opens like a page section of the paper: a double rule, its label in small capitals of the stamp ink */
+.myc-section-head {
+    border-top: 4px double var(--ink);
+    padding-top: var(--space-4);
+}
+
+[data-section="hero"] .myc-section-head,
+[data-section="cta"] .myc-section-head,
+[data-section="newsletter"] .myc-section-head {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.myc-section-title {
+    font-weight: 600;
+}
+
+.myc-section-item {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.myc-section-media {
+    outline: 1px solid var(--line);
+}
+
+/* Hero: the headline of the front page, between a hairline and a thick rule */
+.myc-section[data-section="hero"] {
+    border-block: 1px solid var(--ink);
+    border-block-end-width: 3px;
+}
+
+[data-section="hero"] .myc-section-title {
+    font: var(--text-display-xl);
+    letter-spacing: var(--tracking-display-xl);
+}
+
+[data-section="hero"] .myc-section-text {
+    font-style: italic;
+}
+
+/* Columns: features, posts and the list of stats are set in columns split by hairlines, not boxed */
+[data-section="feature-grid"] .myc-section-item,
+[data-section="post-list"] .myc-section-item,
+[data-section="stats"][data-variant="cards"] .myc-section-item {
+    padding-inline: var(--space-4);
+    background: transparent;
+    border: 0;
+    border-inline-start: 1px solid var(--line);
+}
+
+[data-section="feature-grid"][data-variant="list"] .myc-section-item {
+    border-inline-start: 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.myc-section-icon {
+    color: var(--accent);
+}
+
+/* Stats: the figures of an edition, in lining figures set like a scoreboard of the paper */
+.myc-section-stat-value {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+.myc-section-stat-label {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07em;
+}
+
+[data-section="stats"][data-variant="row"] .myc-section-items {
+    border-block: 1px solid var(--ink);
+}
+
+/* Logos: the advertisers, printed in the key plate */
+[data-section="logo-cloud"] img {
+    filter: grayscale(1);
+}
+
+/* Testimonials: quotations between rules */
+.myc-section-quote {
+    padding-block: var(--space-4);
+    border-block: 1px solid var(--ink);
+    font-style: italic;
+    text-wrap: pretty;
+}
+
+.myc-section-author {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.06em;
+}
+
+[data-section="testimonials"] .myc-section-item {
+    background: transparent;
+    border: 0;
+}
+
+/* Pricing: the rates of the classified ads */
+.myc-section-plan {
+    background: transparent;
+    border: 1px solid var(--ink);
+}
+
+.myc-section-plan-recommended {
+    border: 4px double var(--accent);
+}
+
+.myc-section-plan-price {
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+.myc-section-plan-features li {
+    border-bottom: 1px dotted var(--line-strong);
+}
+
+[data-section="pricing"][data-variant="table"] table {
+    font-variant-numeric: lining-nums tabular-nums;
+    border-block: 2px solid var(--ink);
+}
+
+/* FAQ: letters to the editor. The question in italics, the answer set as running text */
+[data-section="faq"] .myc-section-item {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.myc-section-question {
+    font-family: var(--font-display);
+    font-style: italic;
+}
+
+.myc-section-answer {
+    text-wrap: pretty;
+    hyphens: auto;
+}
+
+/* CTA: a boxed notice of the paper (the newsletter form is already a coupon, theme.css) */
+.myc-section[data-section="cta"] .myc-section-inner {
+    border: 4px double var(--ink);
+}
+
+/* Long text set full width runs in columns with a rule between them, the one place columns help reading */
+@media (min-width: 1024px) {
+    .myc-section[data-section="rich-text"][data-width="full"] .myc-section-text {
+        columns: 3 18em;
+        column-gap: var(--space-gutter);
+        column-rule: 1px solid var(--line);
+        text-align: justify;
+        hyphens: auto;
+    }
+}
+
+/* Gallery: captions in italics, like a photo page */
+[data-section="gallery"] figcaption {
+    font-style: italic;
+}
+
+@media (forced-colors: active) {
+    [data-section="logo-cloud"] img {
+        filter: none;
+    }
+}

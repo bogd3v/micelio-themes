@@ -1,0 +1,515 @@
+/* Gaceta: a broadsheet. Everything comes from type and rules: one serif, small capitals, old-style figures,
+   thin and double rules, no shadow, no radius, no gradient. The core styles the rest from the roles (ADR 0005, section 4) */
+
+/* The page is set in one face: the core's monospaced labels take the serif, in small capitals */
+.myc-app {
+    font-kerning: normal;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+.myc-eyebrow,
+.myc-home-eyebrow,
+.myc-chip,
+.myc-seg,
+.myc-tag,
+.myc-tab,
+.myc-badge,
+.myc-page,
+.myc-btn,
+.myc-sheet-link,
+.myc-callout-label,
+.myc-code-lang,
+.myc-code-copy,
+.myc-kbd,
+.myc-article-toc-summary,
+.myc-toc-title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07em;
+}
+
+.myc-meta,
+.myc-credit,
+.myc-fig-cap,
+.myc-help,
+.myc-news-msg,
+.myc-blog-lead,
+.myc-callout-body,
+.myc-field {
+    font-family: var(--font-sans);
+    letter-spacing: 0.01em;
+}
+
+.myc-credit,
+.myc-fig-cap {
+    font-style: italic;
+}
+
+.myc-meta {
+    text-transform: none;
+}
+
+/* Headlines: the text face at its heaviest, balanced, never stretched */
+.myc-home-lede-title,
+.myc-home-title,
+.myc-blog-title,
+.myc-article-title,
+.myc-card-title,
+.myc-post-row-title,
+.myc-hero-title,
+.myc-section-title,
+.myc-prose h2,
+.myc-prose h3,
+.myc-prose h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-stretch: normal;
+    font-variant-numeric: lining-nums;
+    text-wrap: balance;
+}
+
+.myc-wide {
+    font-stretch: normal;
+}
+
+/* Focus: the stamp ink, never the browser's default amber (WCAG 1.4.11) */
+@media not (forced-colors) {
+    :focus-visible:not(:target) {
+        outline-color: var(--focus);
+    }
+}
+
+/* The masthead: a hairline over the nameplate, a double rule under the folio line */
+.myc-header {
+    background: var(--surface);
+    border-bottom: 4px double var(--ink);
+}
+
+.myc-header[data-layout="centered"] .myc-nav {
+    border-top: 1px solid var(--ink);
+}
+
+.myc-nav-link {
+    font-variant-caps: all-small-caps;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.myc-nav-link[aria-current] {
+    color: var(--ink);
+    text-decoration: underline 1px var(--accent);
+    text-underline-offset: 6px;
+}
+
+.myc-strip {
+    border-top: 1px solid var(--line);
+}
+
+.myc-progress-bar {
+    background: var(--accent);
+}
+
+/* Controls are ruled, square and set in small capitals */
+.myc-btn {
+    border-width: 1px;
+    text-transform: none;
+}
+
+.myc-btn-text {
+    font-style: italic;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    border-bottom: 1px solid var(--accent);
+}
+
+.myc-chip {
+    text-transform: none;
+    border-color: transparent;
+    color: var(--ink-muted);
+}
+
+.myc-chip:hover {
+    border-color: transparent;
+    color: var(--ink);
+    text-decoration: underline 1px var(--line-strong);
+    text-underline-offset: 5px;
+}
+
+.myc-chip[aria-pressed="true"],
+.myc-chip[aria-current] {
+    background: transparent;
+    border-color: transparent;
+    color: var(--ink);
+    text-decoration: underline 2px var(--accent);
+    text-underline-offset: 5px;
+}
+
+.myc-seg {
+    text-transform: none;
+}
+
+.myc-seg-group,
+.myc-input,
+.myc-select {
+    border-color: var(--line-strong);
+}
+
+.myc-corner {
+    display: none;
+}
+
+.myc-tag {
+    text-transform: none;
+}
+
+.myc-avatar {
+    filter: grayscale(1);
+}
+
+/* The front page: the site name as the headline of the edition, its description as the standfirst */
+.myc-home-lede {
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid var(--ink);
+}
+
+.myc-home-lede-title {
+    font: var(--text-display-xl);
+    letter-spacing: var(--tracking-display-xl);
+}
+
+.myc-home-lede-text {
+    max-width: 38em;
+    margin-inline: auto;
+    font: italic var(--text-body-l);
+    color: var(--ink-muted);
+    text-wrap: pretty;
+}
+
+/* A section opens on a double rule, its label in small capitals of the stamp ink */
+.myc-home-head {
+    border-top: 4px double var(--ink);
+    padding-top: var(--space-4);
+}
+
+.myc-home-eyebrow {
+    color: var(--accent);
+}
+
+.myc-home-title {
+    font: var(--text-heading-1);
+    letter-spacing: var(--tracking-heading-1);
+}
+
+/* Latest articles: columns of a page, split by hairlines instead of boxed in cards; the first story takes two columns */
+.myc-latest-grid {
+    gap: var(--space-8) 0;
+}
+
+.myc-latest-grid .myc-card {
+    padding-inline: calc(var(--space-gutter) / 2);
+    border-inline-start: 1px solid var(--line);
+}
+
+@media (min-width: 1024px) {
+    .myc-latest-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .myc-latest-grid > .myc-card:first-child {
+        grid-column: span 2;
+    }
+
+    .myc-latest-grid > .myc-card:first-child .myc-card-title {
+        font: var(--text-heading-1);
+        letter-spacing: var(--tracking-heading-1);
+    }
+}
+
+.myc-card,
+.myc-card:hover,
+.myc-card:focus-within {
+    background: transparent;
+    border-width: 0;
+    box-shadow: none;
+    transform: none;
+}
+
+.myc-card-media,
+.myc-article-cover,
+.myc-fig-media {
+    background-color: var(--surface-sunken);
+    outline: 1px solid var(--line);
+}
+
+/* Photographs are printed in the key plate */
+.myc-card-media img,
+.myc-article-cover img,
+.myc-section-media img {
+    filter: grayscale(1) contrast(1.06);
+}
+
+[data-scheme="dark"] .myc-card-media img,
+[data-scheme="dark"] .myc-article-cover img,
+[data-scheme="dark"] .myc-section-media img {
+    filter: grayscale(1) brightness(0.85);
+}
+
+.myc-card-body {
+    padding-inline: 0;
+}
+
+.myc-card-title {
+    font: var(--text-heading-3);
+}
+
+.myc-card-excerpt,
+.myc-post-row-excerpt {
+    text-wrap: pretty;
+    hyphens: auto;
+}
+
+.myc-card-arrow {
+    color: var(--accent);
+}
+
+.myc-latest-empty {
+    border: 1px dashed var(--line-strong);
+}
+
+/* The newsletter is a coupon to cut out */
+.myc-news {
+    border: 2px dashed var(--line-strong);
+    background: var(--surface-sunken);
+}
+
+/* The archive: a list page under its own masthead */
+.myc-blog-head {
+    border-bottom: 4px double var(--ink);
+}
+
+.myc-blog-title {
+    font: var(--text-display-l);
+    letter-spacing: var(--tracking-display-l);
+}
+
+.myc-post-row {
+    border-color: var(--line);
+}
+
+.myc-post-row-date {
+    font-variant-numeric: oldstyle-nums tabular-nums;
+    font-style: italic;
+}
+
+.myc-post-row-title {
+    font: var(--text-heading-2);
+}
+
+.myc-post-row-link {
+    text-decoration: underline 1px transparent;
+    text-underline-offset: 4px;
+}
+
+.myc-post-row:hover .myc-post-row-link,
+.myc-post-row-link:focus-visible {
+    text-decoration-color: var(--accent);
+}
+
+/* The article: a story under its headline, centered like a front-page lead */
+.myc-article-head {
+    text-align: center;
+}
+
+.myc-article-kicker,
+.myc-article-byline {
+    justify-content: center;
+}
+
+.myc-article-title {
+    font: var(--text-display-l);
+    letter-spacing: var(--tracking-display-l);
+}
+
+.myc-article-lead {
+    margin-inline: auto;
+    max-width: 34em;
+    padding-block: var(--space-4);
+    border-block: 1px solid var(--line);
+    font-style: italic;
+    color: var(--ink-muted);
+    text-wrap: balance;
+}
+
+.myc-article-toc {
+    border-block: 1px solid var(--ink);
+}
+
+.myc-toc-link[aria-current] {
+    color: var(--accent);
+}
+
+/* Running text: justified and hyphenated where the column is wide enough, a drop cap and a first line in small capitals */
+.myc-prose p,
+.myc-prose li {
+    text-wrap: pretty;
+    hanging-punctuation: first allow-end;
+}
+
+@media (min-width: 720px) {
+    .myc-prose p {
+        text-align: justify;
+        hyphens: auto;
+    }
+}
+
+.myc-article-content .myc-prose > div:first-child > p:first-of-type {
+    display: flow-root;
+}
+
+.myc-article-content .myc-prose > div:first-child > p:first-of-type::first-line {
+    font-variant-caps: small-caps;
+    letter-spacing: 0.03em;
+}
+
+.myc-article-content .myc-prose > div:first-child > p:first-of-type::first-letter {
+    float: left;
+    margin: 0.06em 0.08em 0 0;
+    font-size: 3.3em;
+    font-weight: 600;
+    line-height: 0.82;
+    color: var(--accent);
+}
+
+@supports (initial-letter: 3) or (-webkit-initial-letter: 3) {
+    .myc-article-content .myc-prose > div:first-child > p:first-of-type::first-letter {
+        float: none;
+        margin: 0 0.1em 0 0;
+        font-size: inherit;
+        line-height: inherit;
+        -webkit-initial-letter: 3;
+        initial-letter: 3;
+    }
+}
+
+.myc-article-content .myc-prose > div:last-child > p:last-child::after {
+    content: "\a0\25A0" / "";
+    color: var(--accent);
+}
+
+.myc-prose h2 {
+    text-align: center;
+}
+
+.myc-prose h2::before {
+    content: "";
+    display: block;
+    width: 3em;
+    margin: 0 auto var(--space-4);
+    border-top: 4px double var(--line-strong);
+}
+
+.myc-prose h3 {
+    font-variant-caps: small-caps;
+    letter-spacing: 0.03em;
+}
+
+.myc-prose blockquote:not(.myc-quote) {
+    padding: var(--space-4) 0;
+    border: 0;
+    border-block: 3px solid var(--ink);
+    font: italic var(--text-heading-2);
+    text-align: center;
+}
+
+.myc-prose hr {
+    width: 6em;
+    height: 4px;
+    margin-inline: auto;
+    border: 0;
+    border-block: 1px solid var(--ink);
+    background: none;
+}
+
+.myc-prose table {
+    font-variant-numeric: lining-nums tabular-nums;
+    border-block: 2px solid var(--ink);
+}
+
+.myc-prose a {
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.myc-prose a:hover {
+    text-decoration-thickness: 2px;
+}
+
+blockquote.myc-quote {
+    border-color: var(--accent);
+    font-style: italic;
+}
+
+.myc-code,
+.myc-callout {
+    border: 1px solid var(--line-strong);
+    box-shadow: none;
+}
+
+.myc-callout {
+    border-inline-start-width: 4px;
+}
+
+.myc-author-card,
+.myc-comment,
+.myc-palette-panel,
+.myc-sheet-panel,
+.myc-back-to-top {
+    border: 1px solid var(--ink);
+    box-shadow: none;
+}
+
+.myc-comment {
+    border-width: 0 0 1px;
+}
+
+/* The footer: a double rule, then one line of colophon */
+.myc-foot {
+    border-top: 4px double var(--ink);
+}
+
+.myc-foot-credits {
+    border-top: 1px solid var(--line);
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.06em;
+}
+
+.myc-tabbar {
+    border-top: 1px solid var(--ink);
+}
+
+.myc-tab[aria-current] {
+    color: var(--accent);
+}
+
+@media (forced-colors: active) {
+    .myc-card-media img,
+    .myc-article-cover img,
+    .myc-section-media img,
+    .myc-avatar {
+        filter: none;
+    }
+}
+
+/* The one motion: the ink of an underline settles as a link is approached (ADR 0005, section 10) */
+@media (prefers-reduced-motion: no-preference) {
+    .myc-post-row-link,
+    .myc-prose a,
+    .myc-chip,
+    .myc-nav-link {
+        transition: text-decoration-color var(--duration-slow) var(--ease-standard), text-decoration-thickness var(--duration-base) var(--ease-standard), color var(--duration-base) var(--ease-standard);
+    }
+}
