@@ -14,10 +14,6 @@ on:
         description: Id of the Snapshots run that rendered the baselines
         type: string
         required: true
-  # Temporary: workflow_dispatch only works once this file is on main
-  push:
-    branches: [feat/espora-theme]
-    paths: [.github/workflows/baselines.yml]
 
 permissions:
   contents: read
@@ -31,8 +27,8 @@ jobs:
       contents: write
       actions: read
     env:
-      THEME: ${{ inputs.theme || 'espora' }}
-      RUN_ID: ${{ inputs.run-id || '42271045863' }}
+      THEME: ${{ inputs.theme }}
+      RUN_ID: ${{ inputs.run-id }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout
