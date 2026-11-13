@@ -1,0 +1,20 @@
+/* Gaceta Serif: Source Serif 4 (OFL, Adobe) subset to latin for English and Spanish, and renamed, because the original
+   reserves the name 'Source' for unmodified copies (OFL 1.1, section 3). The one family of the theme: text, titles and the nameplate.
+   The roman keeps the weight axis (400 to 700) at a fixed optical size of 20, with small capitals and old-style figures;
+   the italic is one static instance (400). Neither keeps the optical size axis, which would add about 48 KB (README) */
+@font-face {
+    font-family: "Gaceta Serif";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400 700;
+    src: url("/fonts/gaceta-serif-latin-wght.woff2") format("woff2-variations"),
+        url("/fonts/gaceta-serif-latin-wght.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Gaceta Serif";
+    font-style: italic;
+    font-display: swap;
+    font-weight: 400;
+    src: url("/fonts/gaceta-serif-latin-italic-400.woff2") format("woff2");
+}

@@ -12,6 +12,7 @@ Material in this repository that is not under the repository's own license (AGPL
 | Bricolage Grotesque, The Bricolage Grotesque Project Authors | `themes/espora/fonts/bricolage-grotesque-latin-wght.woff2` | OFL-1.1 (`themes/espora/fonts/OFL-BricolageGrotesque.txt`) |
 | Anton, The Anton Project Authors | `themes/cartel/fonts/anton-latin-400.woff2` | OFL-1.1 (`themes/cartel/fonts/OFL-Anton.txt`) |
 | Atkinson Hyperlegible Next, The Atkinson Hyperlegible Next Project Authors | `themes/cartel/fonts/atkinson-hyperlegible-next-latin-wght.woff2` | OFL-1.1 (`themes/cartel/fonts/OFL-AtkinsonHyperlegibleNext.txt`) |
+| Gaceta Serif: Source Serif 4 by Adobe, subset, instanced and renamed (the original reserves the name 'Source', OFL section 3) | `themes/gaceta/fonts/gaceta-serif-latin-wght.woff2`, `themes/gaceta/fonts/gaceta-serif-latin-italic-400.woff2` | OFL-1.1 (`themes/gaceta/fonts/OFL-SourceSerif4.txt`) |
 
 ## Images
 

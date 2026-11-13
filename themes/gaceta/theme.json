@@ -1,0 +1,687 @@
+{
+  "$schema": "../theme.schema.json",
+  "contract": "2.1",
+  "id": "gaceta",
+  "name": "Gaceta",
+  "version": "0.1.0",
+  "license": "AGPL-3.0-only",
+  "modes": [
+    {
+      "id": "prensa",
+      "scheme": "light",
+      "name": "Prensa"
+    },
+    {
+      "id": "archivo",
+      "scheme": "light",
+      "name": "Archivo"
+    },
+    {
+      "id": "microfilm",
+      "scheme": "dark",
+      "name": "Microfilm"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Gaceta Serif",
+      "file": "gaceta-serif-latin-wght.woff2",
+      "preload": true
+    },
+    {
+      "family": "Gaceta Serif",
+      "file": "gaceta-serif-latin-italic-400.woff2",
+      "preload": false
+    }
+  ],
+  "images": {
+    "favicon": "favicon.svg"
+  },
+  "layout": {
+    "header": "centered",
+    "home": "index",
+    "postList": "list",
+    "article": "centered",
+    "footer": "minimal"
+  },
+  "color": {
+    "note": "One stock, one key plate and one stamp: aniline violet. The categories are muted printing inks (umber, graphite, plum, ochre), never interface colors; the theme has no green, orange, vermilion or brand blue. Three editions: prensa (cold newsprint, the default), archivo (an old yellowed edition in sepia) and microfilm (the negative on a library reader).",
+    "tokens": [
+      {
+        "name": "papel",
+        "value": {
+          "prensa": "#e3e5e2",
+          "archivo": "#e6dbc6",
+          "microfilm": "#121614"
+        },
+        "usage": "Primitive: the stock. Prensa is cold grey newsprint (not cream, which is cartel); archivo is an old edition gone yellow; microfilm is the negative on the reader of a newspaper library."
+      },
+      {
+        "name": "papel-alto",
+        "value": {
+          "prensa": "#eef0ed",
+          "archivo": "#efe6d4",
+          "microfilm": "#1a1f1c"
+        },
+        "usage": "Primitive: one sheet above the stock (fields, menus, boxed notices)."
+      },
+      {
+        "name": "papel-hondo",
+        "value": {
+          "prensa": "#d3d6d2",
+          "archivo": "#d8cbb2",
+          "microfilm": "#0c0f0d"
+        },
+        "usage": "Primitive: one sheet below the stock (code, figures, the cut-out coupon)."
+      },
+      {
+        "name": "tinta",
+        "value": {
+          "prensa": "#1c1916",
+          "archivo": "#33241a",
+          "microfilm": "#dfe4dc"
+        },
+        "usage": "Primitive: the key plate. Warm black in prensa, sepia in archivo, the light of the reader in microfilm."
+      },
+      {
+        "name": "tinta-gris",
+        "value": {
+          "prensa": "#4b4741",
+          "archivo": "#5c4836",
+          "microfilm": "#a3aca4"
+        },
+        "usage": "Primitive: the key plate at half pressure: datelines, credits, excerpts."
+      },
+      {
+        "name": "filete",
+        "value": {
+          "prensa": "#b4b8b3",
+          "archivo": "#bfae90",
+          "microfilm": "#2c332f"
+        },
+        "usage": "Primitive: hairline rules between columns and rows. Decorative: it never delimits a control."
+      },
+      {
+        "name": "filete-firme",
+        "value": {
+          "prensa": "#6d716c",
+          "archivo": "#7c6a50",
+          "microfilm": "#76807a"
+        },
+        "usage": "Primitive: the rule of a control (fields, the secondary button)."
+      },
+      {
+        "name": "anilina",
+        "value": {
+          "prensa": "#5a2d82",
+          "archivo": "#5e3570",
+          "microfilm": "#c7a8ec"
+        },
+        "usage": "Primitive: aniline violet, the ink of a mimeograph and of a postmark. The one accent of the theme, darker on paper and lighter on the film."
+      },
+      {
+        "name": "sepia",
+        "value": {
+          "prensa": "#6b4423",
+          "archivo": "#6d3f1f",
+          "microfilm": "#d6b08a"
+        },
+        "usage": "Primitive: a muted printing ink, burnt umber. Category 2."
+      },
+      {
+        "name": "grafito",
+        "value": {
+          "prensa": "#4a4c55",
+          "archivo": "#4f4a44",
+          "microfilm": "#b5bcc4"
+        },
+        "usage": "Primitive: a muted printing ink, graphite. Category 3."
+      },
+      {
+        "name": "ciruela",
+        "value": {
+          "prensa": "#7a2f55",
+          "archivo": "#77304c",
+          "microfilm": "#e3a3c4"
+        },
+        "usage": "Primitive: a muted printing ink, plum. Category 4."
+      },
+      {
+        "name": "ocre",
+        "value": {
+          "prensa": "#6a5310",
+          "archivo": "#665010",
+          "microfilm": "#d8c27a"
+        },
+        "usage": "Primitive: a muted printing ink, dark ochre. Category 5 and warnings."
+      },
+      {
+        "name": "granate",
+        "value": {
+          "prensa": "#8a2433",
+          "archivo": "#842a2a",
+          "microfilm": "#f0a0a0"
+        },
+        "usage": "Primitive: garnet, only for errors and destructive actions, always with a word."
+      },
+      {
+        "name": "plomo",
+        "value": {
+          "prensa": "#3f4442",
+          "archivo": "#463f38",
+          "microfilm": "#c5cbc6"
+        },
+        "usage": "Primitive: lead grey, for success: a neutral ink with its glyph and its word, because the theme has no green."
+      },
+      {
+        "name": "surface",
+        "value": "{papel}",
+        "usage": "Page background: the stock of the edition."
+      },
+      {
+        "name": "surface-raised",
+        "value": "{papel-alto}",
+        "usage": "Fields, menus, the sheet and boxed notices."
+      },
+      {
+        "name": "surface-sunken",
+        "value": "{papel-hondo}",
+        "usage": "Code blocks, figures and the newsletter coupon."
+      },
+      {
+        "name": "line",
+        "value": "{filete}",
+        "usage": "Column rules, row rules and the hairlines of the masthead."
+      },
+      {
+        "name": "line-strong",
+        "value": "{filete-firme}",
+        "usage": "Control borders (fields, secondary button)."
+      },
+      {
+        "name": "ink",
+        "value": "{tinta}",
+        "usage": "Main text and the fill of the primary button."
+      },
+      {
+        "name": "ink-muted",
+        "value": "{tinta-gris}",
+        "usage": "Datelines, credits, excerpts and help."
+      },
+      {
+        "name": "on-ink",
+        "value": {
+          "prensa": "{papel-alto}",
+          "archivo": "{papel-alto}",
+          "microfilm": "{papel}"
+        },
+        "usage": "Text on an ink fill."
+      },
+      {
+        "name": "accent",
+        "value": "{anilina}",
+        "usage": "The stamp: active states, the accent button, the manicule and the ornaments of category 1."
+      },
+      {
+        "name": "accent-soft",
+        "value": {
+          "prensa": "#d1cdd6",
+          "archivo": "#d4c5bb",
+          "microfilm": "#36333f"
+        },
+        "usage": "Tint of the aniline behind accent text, and the surface of a block with tone accent."
+      },
+      {
+        "name": "accent-hover",
+        "value": {
+          "prensa": "#45206a",
+          "archivo": "#48275a",
+          "microfilm": "#d9c2f3"
+        },
+        "usage": "The accent on hover: more ink on paper, more light on the film."
+      },
+      {
+        "name": "on-accent",
+        "value": {
+          "prensa": "#ffffff",
+          "archivo": "#ffffff",
+          "microfilm": "{papel}"
+        },
+        "usage": "Text on the accent."
+      },
+      {
+        "name": "link",
+        "value": "{anilina}",
+        "usage": "Links in running text, underlined."
+      },
+      {
+        "name": "link-soft",
+        "value": {
+          "prensa": "#d1cdd6",
+          "archivo": "#d4c5bb",
+          "microfilm": "#36333f"
+        },
+        "usage": "Tint behind hovered links, highlights and active items."
+      },
+      {
+        "name": "focus",
+        "value": "{anilina}",
+        "usage": "Focus ring: 2px of the stamp ink."
+      },
+      {
+        "name": "success",
+        "value": "{plomo}",
+        "usage": "Success state: lead grey, always with a glyph and a word."
+      },
+      {
+        "name": "success-soft",
+        "value": {
+          "prensa": "#ced0cd",
+          "archivo": "#d1c7b4",
+          "microfilm": "#363a38"
+        },
+        "usage": "Background of a success message."
+      },
+      {
+        "name": "warning",
+        "value": "{ocre}",
+        "usage": "Warning state."
+      },
+      {
+        "name": "warning-soft",
+        "value": {
+          "prensa": "#d3d2c7",
+          "archivo": "#d5c9ae",
+          "microfilm": "#3a3828"
+        },
+        "usage": "Background of a warning message."
+      },
+      {
+        "name": "danger",
+        "value": "{granate}",
+        "usage": "Errors and destructive actions."
+      },
+      {
+        "name": "danger-soft",
+        "value": {
+          "prensa": "#d7cccb",
+          "archivo": "#d9c4b2",
+          "microfilm": "#3e3230"
+        },
+        "usage": "Background of an error message."
+      },
+      {
+        "name": "info",
+        "value": "{anilina}",
+        "usage": "Informative state."
+      },
+      {
+        "name": "info-soft",
+        "value": {
+          "prensa": "#d1cdd6",
+          "archivo": "#d4c5bb",
+          "microfilm": "#36333f"
+        },
+        "usage": "Background of an informative message."
+      },
+      {
+        "name": "category-1",
+        "value": "{anilina}",
+        "usage": "Category 1: anilina, a muted printing ink (rank in the CMS list, modulo five)."
+      },
+      {
+        "name": "category-1-soft",
+        "value": {
+          "prensa": "#d1cdd6",
+          "archivo": "#d4c5bb",
+          "microfilm": "#36333f"
+        },
+        "usage": "Tint behind category 1 text."
+      },
+      {
+        "name": "category-2",
+        "value": "{sepia}",
+        "usage": "Category 2: sepia, a muted printing ink (rank in the CMS list, modulo five)."
+      },
+      {
+        "name": "category-2-soft",
+        "value": {
+          "prensa": "#d3d0c9",
+          "archivo": "#d6c7b0",
+          "microfilm": "#39352c"
+        },
+        "usage": "Tint behind category 2 text."
+      },
+      {
+        "name": "category-3",
+        "value": "{grafito}",
+        "usage": "Category 3: grafito, a muted printing ink (rank in the CMS list, modulo five)."
+      },
+      {
+        "name": "category-3-soft",
+        "value": {
+          "prensa": "#cfd1d0",
+          "archivo": "#d2c8b5",
+          "microfilm": "#333737"
+        },
+        "usage": "Tint behind category 3 text."
+      },
+      {
+        "name": "category-4",
+        "value": "{ciruela}",
+        "usage": "Category 4: ciruela, a muted printing ink (rank in the CMS list, modulo five)."
+      },
+      {
+        "name": "category-4-soft",
+        "value": {
+          "prensa": "#d5cdd0",
+          "archivo": "#d8c5b6",
+          "microfilm": "#3c3237"
+        },
+        "usage": "Tint behind category 4 text."
+      },
+      {
+        "name": "category-5",
+        "value": "{ocre}",
+        "usage": "Category 5: ocre, a muted printing ink (rank in the CMS list, modulo five)."
+      },
+      {
+        "name": "category-5-soft",
+        "value": {
+          "prensa": "#d3d2c7",
+          "archivo": "#d5c9ae",
+          "microfilm": "#3a3828"
+        },
+        "usage": "Tint behind category 5 text."
+      },
+      {
+        "name": "code-ink",
+        "value": "{tinta}",
+        "usage": "Code text."
+      },
+      {
+        "name": "code-muted",
+        "value": "{tinta-gris}",
+        "usage": "Comments and punctuation."
+      },
+      {
+        "name": "code-keyword",
+        "value": "{anilina}",
+        "usage": "Keywords."
+      },
+      {
+        "name": "code-string",
+        "value": "{sepia}",
+        "usage": "Strings."
+      },
+      {
+        "name": "code-number",
+        "value": "{ocre}",
+        "usage": "Numbers."
+      },
+      {
+        "name": "code-function",
+        "value": "{ciruela}",
+        "usage": "Function names."
+      }
+    ]
+  },
+  "shadow": {
+    "note": "Paper does not float: no shadow, no glow. The one ring is the focus of a field, a rule of the stamp ink.",
+    "tokens": [
+      {
+        "name": "shadow-raised",
+        "value": "none",
+        "usage": "A raised block is a ruled box, not a lifted one."
+      },
+      {
+        "name": "shadow-overlay",
+        "value": "none",
+        "usage": "Floating controls carry a rule instead (theme.css)."
+      },
+      {
+        "name": "glow-accent",
+        "value": "none",
+        "usage": "No glow on the accent button."
+      },
+      {
+        "name": "glow-link",
+        "value": "0 0 0 2px {anilina}",
+        "usage": "The focus of fields and interactive surfaces: a 2px rule of the stamp ink, because the core gives comment fields no other indicator."
+      }
+    ]
+  },
+  "spacing": {
+    "note": "4px base. A page is set in columns: tight inside a column, a full gutter with a hairline between columns.",
+    "tokens": [
+      {
+        "name": "space-1",
+        "value": "4px"
+      },
+      {
+        "name": "space-2",
+        "value": "8px"
+      },
+      {
+        "name": "space-3",
+        "value": "12px"
+      },
+      {
+        "name": "space-4",
+        "value": "16px"
+      },
+      {
+        "name": "space-6",
+        "value": "24px"
+      },
+      {
+        "name": "space-8",
+        "value": "32px"
+      },
+      {
+        "name": "space-12",
+        "value": "48px"
+      },
+      {
+        "name": "space-section",
+        "value": "80px",
+        "usage": "Between the sections of a page, like the white between two stories."
+      },
+      {
+        "name": "space-gutter",
+        "value": "{space-8}",
+        "usage": "Gutter between columns; a column rule sits in its middle."
+      },
+      {
+        "name": "space-inline",
+        "value": "20px",
+        "at": {
+          "768px": "max(clamp(24px, 6vw, 96px), calc((100% - {container}) / 2))"
+        },
+        "usage": "Side margin of the page."
+      }
+    ]
+  },
+  "radius": {
+    "note": "Metal type has square corners: nothing is rounded, not even avatars.",
+    "tokens": [
+      {
+        "name": "radius-control",
+        "value": "0px"
+      },
+      {
+        "name": "radius-card",
+        "value": "0px"
+      },
+      {
+        "name": "radius-full",
+        "value": "0px",
+        "usage": "Avatars are square portraits, as in a newspaper."
+      }
+    ]
+  },
+  "size": {
+    "tokens": [
+      {
+        "name": "container",
+        "value": "1200px",
+        "usage": "Width of the broadsheet."
+      },
+      {
+        "name": "measure",
+        "value": "44rem",
+        "usage": "Width of a reading column with its side margins: about 60 characters of the body text."
+      },
+      {
+        "name": "nav-height",
+        "value": "72px",
+        "usage": "Height of the bar header (not used by this theme's centered header)."
+      }
+    ]
+  },
+  "motion": {
+    "note": "A newspaper does not move. The one motion is ink settling on a hover, under prefers-reduced-motion: no-preference.",
+    "tokens": [
+      {
+        "name": "duration-fast",
+        "value": "120ms"
+      },
+      {
+        "name": "duration-base",
+        "value": "240ms"
+      },
+      {
+        "name": "duration-slow",
+        "value": "420ms"
+      },
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.2, 0, 0, 1)"
+      },
+      {
+        "name": "ease-emphasized",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)"
+      }
+    ]
+  },
+  "type": {
+    "families": {
+      "display": "\"Gaceta Serif\", \"Gaceta Serif Fallback\", Georgia, \"Times New Roman\", serif",
+      "sans": "\"Gaceta Serif\", \"Gaceta Serif Fallback\", Georgia, \"Times New Roman\", serif",
+      "mono": "ui-monospace, \"SF Mono\", Menlo, Consolas, \"Liberation Mono\", monospace"
+    },
+    "groups": [
+      {
+        "name": "Headlines",
+        "family": "display",
+        "styles": [
+          {
+            "name": "display-xl",
+            "fontSize": "64px",
+            "lineHeight": "68px",
+            "fontWeight": 600,
+            "letterSpacing": "-0.015em",
+            "sample": "Last edition of the year",
+            "usage": "The name of the site on the front page; once per view."
+          },
+          {
+            "name": "display-l",
+            "fontSize": "46px",
+            "lineHeight": "52px",
+            "fontWeight": 600,
+            "letterSpacing": "-0.01em",
+            "sample": "The river came back",
+            "usage": "Title of an article and of a page."
+          },
+          {
+            "name": "heading-1",
+            "fontSize": "32px",
+            "lineHeight": "38px",
+            "fontWeight": 600,
+            "letterSpacing": "-0.005em",
+            "sample": "Latest articles",
+            "usage": "Title of a section."
+          },
+          {
+            "name": "heading-2",
+            "fontSize": "24px",
+            "lineHeight": "30px",
+            "fontWeight": 600,
+            "sample": "What the archive keeps",
+            "usage": "Subheads of an article; the first story of the front page."
+          },
+          {
+            "name": "heading-3",
+            "fontSize": "20px",
+            "lineHeight": "26px",
+            "fontWeight": 600,
+            "sample": "Notes from the press room",
+            "usage": "Title of a story in the columns and of a row."
+          }
+        ]
+      },
+      {
+        "name": "Text",
+        "family": "sans",
+        "styles": [
+          {
+            "name": "body-l",
+            "fontSize": "20px",
+            "lineHeight": "32px",
+            "fontWeight": 400,
+            "sample": "The paper is set in one serif, read at length.",
+            "usage": "Body of an article."
+          },
+          {
+            "name": "body",
+            "fontSize": "17px",
+            "lineHeight": "27px",
+            "fontWeight": 400,
+            "sample": "Excerpts, the interface and the columns of the front page.",
+            "usage": "Interface and excerpts."
+          },
+          {
+            "name": "body-s",
+            "fontSize": "15px",
+            "lineHeight": "23px",
+            "fontWeight": 400,
+            "sample": "Captions and credits.",
+            "usage": "Captions, help, legal notes."
+          },
+          {
+            "name": "eyebrow",
+            "fontSize": "14px",
+            "lineHeight": "18px",
+            "fontWeight": 600,
+            "letterSpacing": "0.08em",
+            "sample": "Section label",
+            "usage": "Section labels, set in small capitals by theme.css."
+          },
+          {
+            "name": "meta",
+            "fontSize": "14px",
+            "lineHeight": "20px",
+            "fontWeight": 400,
+            "letterSpacing": "0.01em",
+            "sample": "13 November 2026 · 6 min",
+            "usage": "Datelines and counts, in old-style figures."
+          }
+        ]
+      },
+      {
+        "name": "Code",
+        "family": "mono",
+        "styles": [
+          {
+            "name": "code",
+            "fontSize": "14px",
+            "lineHeight": "22px",
+            "fontWeight": 400,
+            "sample": "npm run theme:check",
+            "usage": "Code in blocks and inline."
+          }
+        ]
+      }
+    ]
+  }
+}

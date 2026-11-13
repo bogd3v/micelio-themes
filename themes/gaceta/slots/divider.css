@@ -1,0 +1,28 @@
+/* ThemeDivider: a thick-and-thin rule with a lozenge of the stamp ink in the middle */
+.gaceta-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-block: var(--space-8);
+}
+
+.gaceta-divider::before,
+.gaceta-divider::after {
+    content: "";
+    flex: 1;
+    height: 5px;
+    border-block: 2px solid var(--ink);
+    border-block-end-width: 1px;
+}
+
+.gaceta-divider-orn {
+    width: 20px;
+    height: 10px;
+    fill: var(--accent);
+}
+
+@media (forced-colors: active) {
+    .gaceta-divider-orn {
+        fill: CanvasText;
+    }
+}

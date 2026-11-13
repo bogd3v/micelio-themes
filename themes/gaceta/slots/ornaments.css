@@ -1,0 +1,24 @@
+/* The ornaments of ThemeIllustration, ThemeHero and ThemeDivider: one ink, filled shapes and hairline rules */
+.gaceta-vignette {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.gaceta-orn-fill {
+    fill: currentColor;
+}
+
+.gaceta-orn-rule {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: square;
+}
+
+@media (forced-colors: active) {
+    .gaceta-vignette,
+    .gaceta-hero {
+        color: CanvasText;
+    }
+}

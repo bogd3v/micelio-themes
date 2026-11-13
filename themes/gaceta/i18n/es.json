@@ -1,0 +1,12 @@
+{
+  "theme": {
+    "modes": {
+      "prensa": "Prensa",
+      "archivo": "Archivo",
+      "microfilm": "Microfilm"
+    },
+    "latest": {
+      "emptyNote": "Esta edición sigue en la rotativa · Vuelve pronto"
+    }
+  }
+}

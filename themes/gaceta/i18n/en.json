@@ -1,0 +1,12 @@
+{
+  "theme": {
+    "modes": {
+      "prensa": "Newsprint",
+      "archivo": "Archive",
+      "microfilm": "Microfilm"
+    },
+    "latest": {
+      "emptyNote": "This edition is still on the press · Come back soon"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+/* ThemeMark: the nameplate. The name in the text face at its heaviest, flanked by a rule and a lozenge of the stamp ink */
+.gaceta-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    color: var(--ink);
+    line-height: 1;
+}
+
+.gaceta-mark-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    font-variant-numeric: lining-nums;
+    white-space: nowrap;
+}
+
+.gaceta-mark-orn {
+    display: block;
+    flex: none;
+    width: 1.1em;
+    height: 0.55em;
+}
+
+.gaceta-mark-orn path {
+    fill: var(--accent);
+    stroke: var(--accent);
+    stroke-width: 1;
+}
+
+.gaceta-mark-footer .gaceta-mark-name {
+    font-size: 22px;
+}
+
+/* On a wide page the nameplate is the masthead of the broadsheet */
+@media (min-width: 768px) {
+    .gaceta-mark-header .gaceta-mark-name {
+        font-size: 44px;
+        letter-spacing: -0.02em;
+    }
+}
+
+/* At 320px the header row is narrower than a long name: the ornaments give way first (WCAG 1.4.10) */
+@media (max-width: 359.98px) {
+    .gaceta-mark-header .gaceta-mark-orn {
+        display: none;
+    }
+
+    .gaceta-mark-header .gaceta-mark-name {
+        font-size: 21px;
+    }
+}
+
+@media (forced-colors: active) {
+    .gaceta-mark-orn path {
+        fill: CanvasText;
+        stroke: CanvasText;
+    }
+}
