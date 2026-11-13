@@ -1,0 +1,65 @@
+name: Baselines
+
+# Fetches the baselines a Snapshots run rendered (artifact admission-snapshots-<id>) and pushes them to a scratch branch,
+# baselines/<id>-<run>, as __screenshots__/<id>/. Nothing reaches a pull request by itself: review the images on that branch, then
+# bring the commit over with your own Signed-off-by. For when the artifact cannot be downloaded to a computer.
+on:
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: Theme id, the folder under themes/
+        type: string
+        required: true
+      run-id:
+        description: Id of the Snapshots run that rendered the baselines
+        type: string
+        required: true
+  # Temporary: workflow_dispatch only works once this file is on main
+  push:
+    branches: [feat/espora-theme]
+    paths: [.github/workflows/baselines.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  baselines:
+    name: Fetch the baselines
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: read
+    env:
+      THEME: ${{ inputs.theme || 'espora' }}
+      RUN_ID: ${{ inputs.run-id || '42271045863' }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Download and place the baselines
+        run: |
+          set -euo pipefail
+          if [[ ! "${THEME}" =~ ^[a-z][a-z0-9-]*$ ]] || [ ! -f "themes/${THEME}/theme.json" ]; then echo "::error::${THEME} is not a theme of this repository"; exit 1; fi
+          if [[ ! "${RUN_ID}" =~ ^[0-9]+$ ]]; then echo "::error::run-id must be a number"; exit 1; fi
+          tmp="$(mktemp -d)"
+          gh run download "${RUN_ID}" --repo "${GITHUB_REPOSITORY}" --name "admission-snapshots-${THEME}" --dir "${tmp}"
+          # The artifact holds the theme's baseline folder; accept it with or without the <id>/ level
+          src="${tmp}"
+          if [ -d "${tmp}/${THEME}" ]; then src="${tmp}/${THEME}"; fi
+          if [ -z "$(find "${src}" -name '*.png' -print -quit)" ]; then echo "::error::the artifact holds no image"; exit 1; fi
+          rm -rf "__screenshots__/${THEME}"
+          mkdir -p "__screenshots__/${THEME}"
+          cp -R "${src}/." "__screenshots__/${THEME}/"
+          find "__screenshots__/${THEME}" -type f | sort
+      - name: Push the scratch branch
+        run: |
+          set -euo pipefail
+          branch="baselines/${THEME}-${RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "${branch}"
+          git add "__screenshots__/${THEME}"
+          git commit -m "test(${THEME}): baselines of run ${RUN_ID}, for review"
+          git push --force origin "${branch}"
+          echo "Baselines pushed to \`${branch}\`" >> "${GITHUB_STEP_SUMMARY}"
