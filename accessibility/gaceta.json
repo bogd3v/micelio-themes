@@ -1,0 +1,83 @@
+{
+  "version": "0.1.0",
+  "core": "bc9fb2f",
+  "date": "2026-11-20",
+  "by": "Alejandro Ramirez Garcia",
+  "method": "micelio bc9fb2f (the pin of this repository's workflows) with this repository's themes/gaceta 0.1.0, built with MICELIO_SPECIMEN=1 and NUXT_PUBLIC_THEME=gaceta, served against the mock Strapi; Playwright, Chromium only. Every line but the two screen-reader ones was run by an agent (Claude Code), not by a person and not with a screen reader, under the supervision of the person in by: with the specs of the core's theme suite (a11y, core-a11y, focus-order, focus-visible, focus-not-obscured, notice-room, reflow, motion/reduced: 162 + 33 passed) and with keyboard, order and target-size scripts over 6 pages x 3 modes x 1280 and 390 px x privacy notice shown and dismissed. screen-reader.names and screen-reader.announcements are not verified: the maintainer chose not to run them for this version.",
+  "lines": {
+    "keyboard.operable": {
+      "result": "pass",
+      "note": "72 runs, 6906 Tab stops: every visible control was a stop (6906 of 6906). Operated by keyboard: the mode switch by Enter and Space (84 of 84), topic chips (72 of 72), details/summary (192 of 192), text fields (144 of 144), the slider by its buttons, the arrow keys and its dots (6 of 6 runs). Chromium only, no screen reader."
+    },
+    "keyboard.order": {
+      "result": "fail",
+      "cause": "core",
+      "issue": "https://github.com/bogd3v/micelio/issues/792",
+      "note": "Core markup, the same two pairs as in bogota.json and cartel.json: on About at 1280 px, in the three modes, the code block comes before the 'search' link above it and 'Buy me a coffee' before 'LinkedIn'. WCAG 2.4.3. Not seen at 390 px. Everything else matched the visual order: focus-order.spec.ts on home and the specimen (12 runs) and a script that compares each Tab stop with its position on blog, article, About and the Spanish article (24 runs, 1656 stops; fixed and sticky stops left out; the Back to top button comes last). The theme does not change the DOM order. The same failure with the starter theme was not run."
+    },
+    "keyboard.focus-visible": {
+      "result": "pass",
+      "note": "focus-visible.spec.ts: a card link and the blog search field show an indicator, and core-a11y.spec.ts: the log and row post-list variants show 3:1, normal and forced colors; prensa, archivo and microfilm at 1280 and 390 px. Not every Tab stop was measured."
+    },
+    "keyboard.focus-not-hidden": {
+      "result": "pass",
+      "note": "focus-not-obscured.spec.ts (home, blog, article, about, and no stop hidden by Back to top, notice shown and dismissed) and notice-room.spec.ts (the end of each page clear of the privacy notice at 800 and 1280 px, and no room added once dismissed); prensa, archivo and microfilm at 1280 and 390 px. At 390 px, the last topic chip of the filter rail of home and blog (Linux and open source) takes the focus with 21 of 228 px on screen and the rail does not scroll to it (not fully hidden, so it passes); the rail's CSS is the core's (.myc-latest-filters)."
+    },
+    "keyboard.skip-link": {
+      "result": "pass",
+      "note": "72 runs: the skip link was the first stop, Enter moved the focus into main and the next Tab stayed in main (72 of 72)."
+    },
+    "keyboard.overlays": {
+      "result": "pass",
+      "note": "The search palette and the menu sheet (138 openings with their trigger, 5 pages x 3 modes x 2 viewports x notice shown and dismissed) and Ctrl+K (60): each opened with the focus inside, kept it inside through 25 Tab and Shift+Tab, closed with Escape and, for the triggers, returned the focus to the trigger (138 of 138). Ctrl+K has no trigger to return to. The account menu was not part of this run."
+    },
+    "screen-reader.landmarks": {
+      "result": "pass",
+      "note": "axe (wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa) of a11y.spec.ts on every page of the suite and the Spanish article, no violation, prensa, archivo and microfilm at 1280 and 390 px. From the DOM, not with a screen reader."
+    },
+    "screen-reader.headings": {
+      "result": "pass",
+      "note": "axe heading rules of the same runs, and core-a11y.spec.ts: the specimen has one h1. That the heading list reads as an outline was not judged by a person."
+    },
+    "screen-reader.names": {
+      "result": "not-verified",
+      "note": "The maintainer chose not to run this line with a screen reader for this version (D-BOG-14); the agent did not run it."
+    },
+    "screen-reader.announcements": {
+      "result": "not-verified",
+      "note": "The maintainer chose not to run this line with a screen reader for this version (D-BOG-14); the agent did not run it."
+    },
+    "screen-reader.language": {
+      "result": "pass",
+      "note": "axe html-has-lang and valid-lang on every page, and the Spanish article with its citations has no violation (core-a11y.spec.ts). No screen reader was used."
+    },
+    "zoom.200": {
+      "result": "pass",
+      "note": "640 x 400 px at a device pixel ratio of 2: no horizontal overflow on 6 pages x 3 modes x notice shown and dismissed (36 runs). Checked by script, not by a person looking at each page."
+    },
+    "zoom.reflow-320": {
+      "result": "pass",
+      "note": "reflow.spec.ts: home, blog, article and about do not scroll horizontally at 320 px, in the three modes (the spec runs on the mobile projects only). The specimen is excluded by the spec."
+    },
+    "zoom.text-spacing": {
+      "result": "pass",
+      "note": "Line height 1.5, letter spacing 0.12 em, word spacing 0.16 em and paragraph spacing 2 em injected: no new clipped text and no new horizontal overflow on 72 runs (6 pages x 3 modes x 2 viewports x notice shown and dismissed). Checked by script."
+    },
+    "motion.reduced": {
+      "result": "pass",
+      "note": "motion/reduced.spec.ts, prensa-reduced, archivo-reduced and microfilm-reduced (33 tests): no animation after load and while scrolling on every page and the specimen, and none while the theme switch, the search palette, the menu sheet and the account menu open and close. Chromium only."
+    },
+    "motion.forced-colors": {
+      "result": "pass",
+      "note": "forcedColors active, 42 runs and 3495 Tab stops: every stop with part of it on screen changed at least 3:1 in the pixels around it when focused; pressed and unpressed toggles differ; no icon was hidden; the blog search field has its border (screenshots, prensa and microfilm). The language, mode and icon buttons have no border of their own, their text or icon is visible. Chromium emulation, not a Windows high contrast theme."
+    },
+    "pointer.target-size": {
+      "result": "pass",
+      "note": "axe wcag22aa target-size: no violation in the runs of a11y.spec.ts. By hand, with a script (article and Spanish article, 3 modes, 1280 and 390 px, 12 runs): the 5 sliders' previous and next buttons are 44 x 44 px; the dots are 24 x 4 (active) and 40 x 4 px, below 24 px high, and pass by spacing: the nearest other target is 20 px or more from the centre of each (12 px needed); the table-of-contents links are 38 px high or more at 1280 and 44 px at 390, and at least 24 px wide. No other target outside running text was below 24 px without room."
+    },
+    "pointer.dragging": {
+      "result": "pass",
+      "note": "The slider of the Spanish article (6 runs: 3 modes x 2 viewports): previous and next buttons of 44 x 44 px, the arrow keys and the dots change the slide; no draggable element."
+    }
+  }
+}
