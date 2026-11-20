@@ -2,7 +2,7 @@ name: Snapshots
 
 # Renders the visual baselines in the Playwright image of the core and uploads them as admission-snapshots-<id>; nothing is committed
 # (docs/themes/publishing-a-theme.md of bogd3v/micelio, section 6). Review the images, unzip them into __screenshots__/<id>/ and commit.
-# Pinned to one core commit (93b9459, until v0.9.0 is tagged): replace 93b9459 and core-ref together with the other workflows.
+# Pinned to one core commit (bc9fb2f, until v0.9.0 is tagged): replace bc9fb2f and core-ref together with the other workflows.
 on: workflow_dispatch
 
 permissions:
@@ -10,9 +10,9 @@ permissions:
 
 jobs:
   snapshots:
-    uses: bogd3v/micelio/.github/workflows/theme-snapshots.yml@93b9459ad55e65aeecde3e288ce6e3ef916218e5
+    uses: bogd3v/micelio/.github/workflows/theme-snapshots.yml@bc9fb2f9f26455cd1c9b09158595c171fe8a4894
     with:
       theme-dirs: themes
-      core-ref: 93b9459ad55e65aeecde3e288ce6e3ef916218e5
+      core-ref: bc9fb2f9f26455cd1c9b09158595c171fe8a4894
     permissions:
       contents: read
