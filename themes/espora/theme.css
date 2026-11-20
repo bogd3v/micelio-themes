@@ -38,9 +38,28 @@
     border-radius: var(--radius-full);
 }
 
+/* Segmented switches: rounded group, no clip. A clip (overflow: hidden)
+   would cut the focus ring the core draws outside each segment (WCAG 2.4.7),
+   so the outer segments get the corners instead (group radius minus its 1px border). */
 .myc-seg-group {
-    overflow: hidden;
     border-radius: var(--radius-control);
+}
+
+.myc-seg-group > .myc-seg:first-child {
+    border-start-start-radius: calc(var(--radius-control) - 1px);
+    border-end-start-radius: calc(var(--radius-control) - 1px);
+}
+
+.myc-seg-group > .myc-seg:last-child {
+    border-start-end-radius: calc(var(--radius-control) - 1px);
+    border-end-end-radius: calc(var(--radius-control) - 1px);
+}
+
+/* Comment fields: the core draws their focus only with the glow-link shadow,
+   which this theme sets to none; draw the core's ring here (WCAG 2.4.7). */
+.myc-comment-form :is(input, textarea):focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
 }
 
 .myc-kbd {
