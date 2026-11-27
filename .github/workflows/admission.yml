@@ -1,15 +1,24 @@
 name: Admission
 
-# Every pull request is admitted the way publishing admits it (docs/themes/publishing-a-theme.md of bogd3v/micelio): theme:check and
+# A pull request admits the themes it changes, the way publishing admits them (docs/themes/publishing-a-theme.md of bogd3v/micelio): theme:check and
 # theme:pack, performance budgets per site mode, visual regression and axe. Pinned to one core commit (bc9fb2f, until v0.9.0 is tagged): replace bc9fb2f and core-ref together
 # with the other workflows. Baselines are read from __screenshots__/<id>/ and the accessibility record from accessibility/<id>.json.
 # Each theme is admitted from its own folder, as publish.yml does: a build that holds every theme of the repository compiles the slots of
 # the others in as chunks loaded on demand, and their entries count against the JavaScript budget of a theme that never ships with them.
-# The status for the ruleset is `Admission`: one verdict over every theme, so the ruleset does not name a theme.
+# Which themes (scripts/ci/changed-themes.sh): those with a change under themes/<id>/ or __screenshots__/<id>/, or in accessibility/<id>.json;
+# every theme when a file under .github/workflows/ changes, and on a run by hand; none otherwise. A new push cancels the run before it of the
+# same pull request.
+# `Admission` is the one status that gives this workflow's verdict on every pull request: one verdict over the admitted themes, under a
+# name that holds no theme.
 on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+
+# A run that is not of a pull request has a group of its own: it is never cancelled and never waits behind another
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -25,17 +34,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          fetch-depth: 2
           persist-credentials: false
-      - name: List the theme folders
+      - name: Test the list of themes
+        run: bash scripts/ci/changed-themes.test.sh
+      - name: List the themes to admit
         id: list
+        env:
+          EVENT: ${{ github.event_name }}
         run: |
-          ids="$(find themes -mindepth 2 -maxdepth 2 -name theme.json -printf '%h\n' | xargs -r -n1 basename | sort | jq -R . | jq -sc .)"
-          if [ "${ids}" = "[]" ]; then echo "::error::no theme found in themes/"; exit 1; fi
+          # On a pull request the checkout is its merge commit, so HEAD^1 is the base branch; with no base every theme is listed
+          base=""
+          if [ "${EVENT}" = "pull_request" ]; then base="HEAD^1"; fi
+          ids="$(scripts/ci/changed-themes.sh "${base}" HEAD)"
+          echo "ids=${ids}"
           echo "ids=${ids}" >> "${GITHUB_OUTPUT}"
 
   admission:
     name: admission (${{ matrix.theme }})
     needs: themes
+    if: needs.themes.outputs.ids != '[]'
     strategy:
       fail-fast: false
       matrix:
@@ -61,10 +79,14 @@ jobs:
       - name: Every theme was admitted
         env:
           THEMES: ${{ needs.themes.result }}
+          IDS: ${{ needs.themes.outputs.ids }}
           ADMISSION: ${{ needs.admission.result }}
         run: |
-          echo "themes: ${THEMES}, admission: ${ADMISSION}"
-          if [ "${THEMES}" != "success" ] || [ "${ADMISSION}" != "success" ]; then
+          echo "themes: ${THEMES} ${IDS}, admission: ${ADMISSION}"
+          # With the empty list the matrix is skipped; with a list, only success of every admission passes
+          expected=success
+          if [ "${IDS}" = "[]" ]; then expected=skipped; fi
+          if [ "${THEMES}" != "success" ] || [ "${ADMISSION}" != "${expected}" ]; then
             echo "::error::the admission of at least one theme did not pass"
             exit 1
           fi

@@ -16,7 +16,7 @@ Everything that checks a theme is a script of the core, `bogd3v/micelio`, at the
 - `__screenshots__/<id>/<mode>/<viewport>/<page>.png`: visual baselines. Never commit images rendered on a machine: render them with the core's `theme-snapshots.yml`, review them, commit them.
 - `accessibility/<id>.json`: the manual record, from the checklist of the core. An agent may run it under a person's supervision; that person is named in `by` and answers for the record, and `method` names who ran which lines (the screen-reader lines are a person's). It is never copied from a run of another version.
 - `.github/workflows/publish.yml`, `sign-index.yml`: copies of the core's templates (`docs/themes/registry-workflows/`). They hold the signing jobs whose paths are the pinned identities: never rename, move or run them from another branch than `main`; keep the `if: github.repository == 'bogd3v/micelio-themes'` guards. They are unchanged copies of the templates of the pinned core release or commit.
-- `admission.yml`, `dco.yml`: CI for every pull request. `snapshots.yml` (by hand) renders the baselines with the core's `theme-snapshots.yml`.
+- `admission.yml`, `dco.yml`: CI for every pull request. `admission.yml` admits only the themes that `scripts/ci/changed-themes.sh` lists; its test, `bash scripts/ci/changed-themes.test.sh` (git and jq), runs in the `themes` job. `snapshots.yml` (by hand) renders the baselines with the core's `theme-snapshots.yml`.
 
 ## Rules
 
