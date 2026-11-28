@@ -1,7 +1,8 @@
 /* Cartel's own styling of the public hooks: a two-ink poster. The core styles everything else from the roles (ADR 0005, section 4). */
 
-/* The browser's own focus ring (1px amber in Chrome) is about 2:1 on the cream paper: every ring takes the second ink (WCAG 1.4.11, 2.4.7).
-   Only its color is set, so a control the core rings elsewhere (a card, a row) keeps no ring of its own; not in forced colors, where the core's rings use Highlight */
+/* The browser's own focus ring (1px amber in Chrome) is about 2:1 on the cream paper: every ring takes the second ink (WCAG 1.4.11, 2.4.7),
+   but the Back to top button's, which is the first ink (below: the button is filled with the second). Only its color is set,
+   so a control the core rings elsewhere (a card, a row) keeps no ring of its own; not in forced colors, where the core's rings use Highlight */
 @media not (forced-colors) {
     :focus-visible:not(:target) {
         outline-color: var(--focus);
@@ -385,6 +386,13 @@ blockquote.myc-quote {
 
 .myc-back-to-top {
     border: 2px solid var(--ink);
+}
+
+/* The button is filled with `link`, the same ink as `focus`: the core's ring would vanish into it. Its ring is the first ink, 2px out,
+   where it touches only the page (15:1 on papel, 14.9:1 on tinta; WCAG 2.4.7, 1.4.11). In forced colors the browser draws it in a system colour */
+.myc-back-to-top:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
 }
 
 /* Windows high contrast: the out-of-register plate and the one-ink covers are dropped */
