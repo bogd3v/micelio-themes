@@ -1,51 +1,51 @@
 {
-  "version": "0.1.0",
-  "core": "bc9fb2f",
-  "date": "2026-11-20",
+  "version": "0.1.1",
+  "core": "1288a69",
+  "date": "2026-11-27",
   "by": "Alejandro Ramirez Garcia",
-  "method": "micelio bc9fb2f (the pin of this repository's workflows) with this repository's themes/espora 0.1.0 as of main 4e5e82d (with the focus fixes of #17), built with MICELIO_SPECIMEN=1 and NUXT_PUBLIC_THEME=espora, against the mock Strapi; Playwright 1.63.0, Chromium only, CDN images blocked. Every line but the two screen-reader ones was run by an agent (Claude Code), not by a person and not with a screen reader, under the supervision of the person in by: the core's theme specs (a11y, core-a11y, focus-order, focus-visible, focus-not-obscured, notice-room, reflow: 108 passed, 40 skipped; motion/reduced: 22 passed) and probe scripts over 6 pages x claro/oscuro x 1280/390 px x notice shown/dismissed. screen-reader.names and screen-reader.announcements are not verified: the maintainer chose not to run them for this version (D-BOG-14), so the record is partial. motion.forced-colors is not verified, for the reason in its note.",
+  "method": "micelio 1288a69 (the pin of this repository's workflows) with this repository's themes/ as of main 92aae16 plus the version 0.1.1 of themes/espora/theme.json, built with MICELIO_SPECIMEN=1 and NUXT_PUBLIC_THEME=espora, against the mock Strapi; Playwright 1.63.0, Chromium only, CDN images blocked. Every line but the two screen-reader ones was run by an agent (Claude Code), not by a person, under the supervision of the person in by: the core's theme specs (a11y, core-a11y, focus-order, focus-visible, focus-not-obscured, notice-room, reflow: 116 passed, 40 skipped; motion/reduced: 22 passed) and probe scripts over 6 pages x claro/oscuro x 1280/390 px x notice shown/dismissed, one of them on the markup core 1288a69 adds. screen-reader.names and screen-reader.announcements are not verified: the maintainer chose not to run them for this version, so the record is partial. motion.forced-colors is not verified, for the reason in its note. Nothing is copied from the 0.1.0 record.",
   "lines": {
     "keyboard.operable": {
       "result": "pass",
-      "note": "48 runs, 4636 Tab stops and 4635 visible controls: every control was a stop but one, the scrollable container of the specimen's 'Request flow' diagram (tabindex 0), once (oscuro, 390 px, notice dismissed). Operated by keyboard: the mode switch by Enter and Space (56 of 56), details/summary (216 of 216), topic chips (48 of 48), text fields (96 of 96), the slider by its buttons, the arrow keys and its dots (4 of 4 runs). Chromium only, no screen reader."
+      "note": "48 runs, 4692 Tab stops and 4692 visible controls: every control was a stop, the scrollable container of the specimen's diagram included. Operated by keyboard: the mode switch by Enter and Space (56 of 56), details/summary (216 of 216), topic chips (48 of 48), text fields (96 of 96), the slider by its buttons, the arrow keys and its dots (4 of 4 runs). The markup core 1288a69 adds, on the specimen (8 runs): the 4 links of the composition group and the 6 controls of the newsletter group were Tab stops in every run, and each of the 2 consent checkboxes was checked and unchecked with Space (16 of 16). The testimonials add no control: the source is the cite of the quote and the rating is text. Chromium only, no screen reader."
     },
     "keyboard.order": {
       "result": "fail",
       "cause": "core",
       "issue": "https://github.com/bogd3v/micelio/issues/792",
-      "note": "Core markup, the same pair as in cartel.json and gaceta.json: on About at 1280 px, in claro and oscuro, the code block comes before the 'search' link above it and 'Buy me a coffee' before 'LinkedIn'. WCAG 2.4.3. Not seen at 390 px. The footer is read column by column on every page at 1280 px (the Mastodon link after the last link of the first column), accepted as in bogota.json. Everything else matched the visual order: a script that compares each Tab stop with its position on blog, article, About and the Spanish article (16 runs, 1128 stops; fixed and sticky stops left out) and focus-order.spec.ts on home and the specimen. The theme does not change the DOM order. The same failure with the starter theme was not run."
+      "note": "Core markup, the same pair as in the 0.1.0 record, still there on core 1288a69 (#792 is closed): on About at 1280 px, in claro and oscuro, the code block comes before the 'search' link above it and 'Buy me a coffee' before 'LinkedIn'. WCAG 2.4.3. Not seen at 390 px. The footer is read column by column on every page at 1280 px ('About' and 'Linux and open source' before the next column), accepted as in bogota.json. Everything else matched the visual order: a script that compares each Tab stop with its position on blog, article, About and the Spanish article (16 runs, 1128 stops; fixed and sticky stops left out) and focus-order.spec.ts on home and the specimen. The theme does not change the DOM order."
     },
     "keyboard.focus-visible": {
       "result": "pass",
-      "note": "6 pages x claro/oscuro, 24 runs (1280 px with the notice dismissed, 390 px with it shown), 2322 Tab stops. The fixes of #17 work: the language and mode switches show their ring (the group no longer clips it) and the comment fields draw a 2px ring, in the spec runs and in forced colors; focus-visible.spec.ts and core-a11y.spec.ts pass. Stops with no ring of the theme's own show the browser's default ring (outline-style auto). At 1280 px it is dark (16.7:1 on claro, 14.7:1 on oscuro against the page), but at 390 px in Chromium's mobile emulation it is Chrome's amber, rgb(229,151,0), 2.1:1 on claro, on 59 stops (inline links, captions, Back to top, references), and 14.7:1 on oscuro. The maintainer decided that the browser's default ring counts as a pass for this line (D-BOG-16). Cards and post rows draw their ring on the host (spec-covered)."
+      "note": "6 pages x claro/oscuro x 1280/390 px x notice shown/dismissed, 48 runs, 4684 Tab stops: 4596 change 20 pixels or more by 3:1 with focus. Of the other 88, 34 are post rows of the specimen whose ring is drawn on the row (core-a11y.spec.ts checks it at 3:1 and passes) and 54 are on claro at 390 px with the notice shown, where the stops with no ring of the theme's own show the browser's default ring (outline-style auto): a second script (24 runs, 2350 stops) finds 244 such stops, dark at 1280 px (16.7:1 on claro, 14.7:1 on oscuro against the page) and Chrome's amber, rgb(229,151,0), at 390 px in Chromium's mobile emulation: 2.1:1 on claro, on 61 stops (inline links, captions, Back to top, references and the 2 new consent checkboxes), 14.7:1 on oscuro. The maintainer decided that the browser's default ring counts (D-BOG-16). The composition links and the newsletter fields and buttons draw the theme's 2px ring. focus-visible.spec.ts passes."
     },
     "keyboard.focus-not-hidden": {
       "result": "pass",
-      "note": "No Tab stop of the 48 runs is hidden whole: 0 of 4636 stops have no visible sample point out of 15. Fewer than half visible, 12 stops: the second topic card of the topics scroller of home and blog at 390 px (6 of 15, and 3 of 15 for its inner link on home), in a horizontal scroller whose CSS is the core's. focus-not-obscured.spec.ts and notice-room.spec.ts pass for espora (claro and oscuro, 1280 and 390 px)."
+      "note": "No Tab stop of the 48 runs is hidden whole: 0 of 4684 stops have no visible sample point out of 15. Fewer than half visible, 12 stops: the second topic card of the topics scroller of home and blog at 390 px (6 of 15, and 3 of 15 for its inner link on home), in a horizontal scroller whose CSS is the core's. None of the stops of the composition and newsletter groups is hidden or less than half visible (8 runs). focus-not-obscured.spec.ts and notice-room.spec.ts pass for espora (claro and oscuro, 1280 and 390 px)."
     },
     "keyboard.skip-link": {
       "result": "pass",
-      "note": "All 48 runs: the skip link was the first Tab stop, Enter moved the focus into main and the next Tab stayed in main (48 of 48); also with the privacy notice shown."
+      "note": "All 48 runs: the skip link was the first Tab stop, Enter moved the focus into main and the next Tab stayed in main (48 of 48, in two scripts); also with the privacy notice shown."
     },
     "keyboard.overlays": {
       "result": "pass",
-      "note": "The search palette and the menu sheet (92 openings with their trigger, 5 pages x claro/oscuro x 1280/390 px x notice shown and dismissed) and Ctrl+K (40): each opened with the focus inside, kept it inside through 25 Tab, closed with Escape and, for the triggers, returned the focus to the trigger (92 of 92). Ctrl+K has no trigger to return to. The account menu was not part of this run (the mock has no signed-in user)."
+      "note": "The search palette and the menu sheet (92 openings with their trigger, 5 pages x claro/oscuro x 1280/390 px x notice shown and dismissed) and Ctrl+K (40): each opened with the focus inside, kept it inside through 25 Tab and Shift+Tab, closed with Escape and, for the triggers, returned the focus to the trigger (92 of 92). Ctrl+K has no trigger to return to. The account menu was not part of this run (the mock has no signed-in user)."
     },
     "screen-reader.landmarks": {
       "result": "pass",
-      "note": "axe (wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa) of a11y.spec.ts on every page of the suite, no violation, claro and oscuro at 1280 and 390 px; and a script over 48 runs: one main, one banner, one contentinfo and every nav named. From the DOM, not with a screen reader."
+      "note": "axe (wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa) of a11y.spec.ts on every page of the suite and the Spanish article, no violation, claro and oscuro at 1280 and 390 px; and a script over 48 runs: one main, one banner, one contentinfo and every nav named, each with its own name. From the DOM, not with a screen reader."
     },
     "screen-reader.headings": {
       "result": "pass",
-      "note": "axe heading rules of the same runs, and the script: one h1 and no skipped level on every page (48 runs); core-a11y.spec.ts: the specimen has one h1. That the heading list reads as an outline was not judged by a person."
+      "note": "axe heading rules of the same runs, and the script: one h1 and no skipped level on every page (48 runs), the specimen's composition group included; core-a11y.spec.ts: the specimen has one h1, the frames' copies read as level 4. That the heading list reads as an outline was not judged by a person."
     },
     "screen-reader.names": {
       "result": "not-verified",
-      "note": "The maintainer chose not to run this line with a screen reader for this version (D-BOG-14); the agent did not run it."
+      "note": "The maintainer chose not to run this line with a screen reader for this version (2026-11-27, as D-BOG-14 did for 0.1.0); the agent did not run it."
     },
     "screen-reader.announcements": {
       "result": "not-verified",
-      "note": "The maintainer chose not to run this line with a screen reader for this version (D-BOG-14); the agent did not run it."
+      "note": "The maintainer chose not to run this line with a screen reader for this version (2026-11-27, as D-BOG-14 did for 0.1.0); the agent did not run it."
     },
     "screen-reader.language": {
       "result": "pass",
@@ -57,7 +57,7 @@
     },
     "zoom.reflow-320": {
       "result": "pass",
-      "note": "reflow.spec.ts: home, blog, article and about do not scroll horizontally at 320 px, in claro and oscuro (mobile projects only); and a script at 320 px on the six pages, 12 runs, with no overflow. The specimen is excluded by the spec."
+      "note": "reflow.spec.ts: home, blog, article and about do not scroll horizontally at 320 px, in claro and oscuro (mobile projects only); and a script at 320 px on the six pages, the specimen included, 12 runs, with no overflow."
     },
     "zoom.text-spacing": {
       "result": "pass",
@@ -69,11 +69,11 @@
     },
     "motion.forced-colors": {
       "result": "not-verified",
-      "note": "forcedColors: active, 48 runs, 3572 Tab stops: 3542 changed at least 3:1 in the pixels around them; the other 30 are post-list rows and log links of the specimen, whose ring is drawn on the row (core-a11y.spec.ts checks it in forced colors and passes). The switches and the comment fields now show a Highlight ring. But in the screenshots of the Chromium emulation the label of the pressed segment (EN, Light, Dark) and the text on other Highlight fills is drawn as a solid block, so whether it is legible was not judged (it is the core's rule, Highlight/HighlightText), and neither were borders, icons or information by colour alone. A look on a real high-contrast system is needed."
+      "note": "forcedColors: active, 48 runs, 4684 Tab stops: 4646 changed at least 3:1 in the pixels around them; the other 38 are post rows of the specimen, whose ring is drawn on the row (core-a11y.spec.ts checks it in forced colors and passes). Whether text on Highlight fills, borders, icons and information by colour alone hold up in forced colors was not judged from the Chromium emulation, as for 0.1.0: a look on a real high-contrast system is needed."
     },
     "pointer.target-size": {
       "result": "pass",
-      "note": "axe wcag22aa target-size: no violation in the runs of a11y.spec.ts. By script on all 48 runs: 4512 controls, 1044 under 24 px, none of them without room (a 24 px circle on each touches no other target); the slider buttons are 44 x 44 px. Not checked by hand beyond the script."
+      "note": "axe wcag22aa target-size: no violation in the runs of a11y.spec.ts. By script on all 48 runs: 4568 controls, 1060 under 24 px, none of them without room (a 24 px circle on each touches no other target); the slider buttons are 44 x 44 px. The new consent checkboxes are 13 x 13 px inside a label that toggles them (788 x 20 and 546 x 20 px at 1280, 308 x 40 and 258 x 60 px at 390) and have room. Not checked by hand beyond the script."
     },
     "pointer.dragging": {
       "result": "pass",
