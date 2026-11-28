@@ -1,29 +1,29 @@
 {
-  "version": "1.0.2",
-  "core": "bc9fb2f",
-  "date": "2026-11-20",
+  "version": "1.0.3",
+  "core": "1288a69",
+  "date": "2026-11-27",
   "by": "Alejandro Ramirez Garcia",
-  "method": "micelio bc9fb2f (the pin of this repository's workflows) with themes/bogota 1.0.2, built with MICELIO_SPECIMEN=1 and NUXT_PUBLIC_THEME=bogota, against the mock Strapi. The 14 lines marked pass were run by an agent (Claude Code) under the supervision of the person in by, with Playwright (the core's theme specs and two probe scripts written for this run, described in the notes), not by a person with a screen reader. Chromium only, one worker, noche and día at 1280 and 390 px, production build. The two screen-reader lines were not run: the maintainer chose not to run them for this version (D-BOG-14, 2026-11-20), so there is no maintainer run and the record is partial. keyboard.order and motion.forced-colors are not verified, for the reasons in their notes. Nothing is copied from the 1.0.1 record.",
+  "method": "micelio 1288a69 (the pin of this repository's workflows) with themes/ of micelio-themes main 92aae16 and bogota 1.0.3, built with MICELIO_SPECIMEN=1 and NUXT_PUBLIC_THEME=bogota, against the mock Strapi. The 14 lines marked pass were run by an agent (Claude Code) under the supervision of the person in by, with Playwright: the core's theme specs and three probe specs, the third for the markup core 1288a69 adds (the consent checkbox, the testimonials' source and rating, the composition group). Not by a person with a screen reader. Chromium only, one worker, noche and dia at 1280 and 390 px, production build. The two screen-reader lines were not run: the maintainer chose not to run them for this version, so there is no maintainer run and the record is partial. keyboard.order and motion.forced-colors are not verified, for the reasons in their notes. Nothing is copied from the 1.0.2 record.",
   "lines": {
     "keyboard.operable": {
       "result": "pass",
-      "note": "A Tab pass of home, blog, article, about, specimen and the Spanish article with the privacy notice shown and dismissed, in noche and día at 1280 and 390 px: 48 passes, 4684 Tab stops, every focusable control has a name. The theme switch (Enter and Space), the <details> of the specimen (Enter and Space, first 5 of each project) and the slider (arrow keys, buttons) were operated with the keyboard. Scripted, Chromium only; not every control of every page was activated."
+      "note": "A Tab pass of home, blog, article, about, specimen and the Spanish article with the privacy notice shown and dismissed, in noche and dia at 1280 and 390 px: 48 passes, 4740 Tab stops, every focusable control has a name. The theme switch (Enter and Space), the <details> of the specimen (Enter and Space, first 5 of each project) and the slider (arrow keys, buttons) were operated with the keyboard. On the specimen the two newsletter consent checkboxes are Tab stops, Space checks and unchecks them, and Enter on Subscribe with the box unchecked stops the form with the box reported missing (4 projects). Scripted, Chromium only; not every control of every page was activated."
     },
     "keyboard.order": {
       "result": "not-verified",
-      "note": "The Tab-order oracle of the core (focus fixture tabStops and orderDepartures, scrolled 400 px, notice shown) found no departure on home, about and the specimen, nor on blog, article and the Spanish article at 390 px, in noche and día. At 1280 px on blog, article and the Spanish article it reports the sticky side columns (the table of contents, the share buttons, the RSS and fediverse links) as departures, because the oracle treats every sticky stop as a header and expects it before the first stop of the page. Whether those are real order problems was not judged, so the line is not verified. The 1.0.1 run found departures on About: none now."
+      "note": "The Tab-order oracle of the core (focus fixture tabStops and orderDepartures, scrolled 400 px, notice shown) found no departure on home, about and the specimen, nor on blog, article and the Spanish article at 390 px, in noche and dia. At 1280 px on blog, article and the Spanish article it reports the sticky side columns (the table of contents, the share buttons, the RSS and fediverse links) as departures, because the oracle treats every sticky stop as a header and expects it before the first stop of the page. Whether those are real order problems was not judged, so the line is not verified, as in the 1.0.2 run."
     },
     "keyboard.focus-visible": {
       "result": "pass",
-      "note": "Every Tab stop of home, blog, article, about and the Spanish article, notice dismissed, noche and día at 1280 and 390 px (20 runs, 1296 stops): the pixels of the stop's area differ with and without focus, or an outline is drawn on the stop or its card; none without an indicator. Also focus-visible.spec.ts (a card link and the blog search field) and the 3:1 check of the log and row variants in core-a11y.spec.ts. The specimen's stops and the 3:1 ratio of each ring were not measured."
+      "note": "Every Tab stop of home, blog, article, about and the Spanish article, notice dismissed, noche and dia at 1280 and 390 px (20 runs, 1296 stops): the pixels of the stop's area differ with and without focus, or an outline is drawn on the stop or its card; none without an indicator. On the specimen, the 6 stops of the new markup (4 links of the composition group's raised band, 2 consent checkboxes) draw an indicator in all 4 projects, and each ring is at least 5.75:1 against the surface behind it (the checkboxes in noche keep the browser's own ring). Also focus-visible.spec.ts and the 3:1 check of the log and row variants in core-a11y.spec.ts. The other stops of the specimen were not measured."
     },
     "keyboard.focus-not-hidden": {
       "result": "pass",
-      "note": "focus-not-obscured.spec.ts (home, blog, article, about, and no stop hidden by Back to top, notice shown and dismissed) and notice-room.spec.ts (the end of each page clear of the privacy notice at 800 and 1280 px, and no room added once dismissed); noche and día at 1280 and 390 px."
+      "note": "focus-not-obscured.spec.ts (home, blog, article, about, and no stop hidden by Back to top, notice shown and dismissed) and notice-room.spec.ts (the end of each page clear of the privacy notice at 800 and 1280 px, and no room added once dismissed); noche and dia at 1280 and 390 px."
     },
     "keyboard.skip-link": {
       "result": "pass",
-      "note": "All 48 runs (6 pages x noche/día x 1280/390 px x notice shown/dismissed): the first Tab stop is the skip link, Enter moves focus into <main>, and the next Tab lands inside <main>."
+      "note": "All 48 runs (6 pages x noche/dia x 1280/390 px x notice shown/dismissed): the first Tab stop is the skip link, Enter moves focus into <main>, and the next Tab lands inside <main>."
     },
     "keyboard.overlays": {
       "result": "pass",
@@ -31,7 +31,7 @@
     },
     "screen-reader.landmarks": {
       "result": "pass",
-      "note": "axe (wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa) of a11y.spec.ts on every page of the suite and the Spanish article, no violation, noche and día at 1280 and 390 px. From the DOM, not with a screen reader."
+      "note": "axe (wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa) of a11y.spec.ts on every page of the suite, the specimen with its composition group included, no violation, noche and dia at 1280 and 390 px. From the DOM, not with a screen reader."
     },
     "screen-reader.headings": {
       "result": "pass",
@@ -39,43 +39,43 @@
     },
     "screen-reader.names": {
       "result": "not-verified",
-      "note": "The maintainer chose not to run this line for this version (D-BOG-14, 2026-11-20)."
+      "note": "The maintainer chose not to run this line for this version (D-BOG-14, 2026-11-20; kept for 1.0.3 by the maintainer's decision of 2026-11-27)."
     },
     "screen-reader.announcements": {
       "result": "not-verified",
-      "note": "The maintainer chose not to run this line for this version (D-BOG-14, 2026-11-20)."
+      "note": "The maintainer chose not to run this line for this version (D-BOG-14, 2026-11-20; kept for 1.0.3 by the maintainer's decision of 2026-11-27)."
     },
     "screen-reader.language": {
       "result": "pass",
-      "note": "axe html-has-lang and valid-lang on every page; on the Spanish article html lang is es, and the reference titles whose data declares a language carry lang=\"en\" (2 of the 4 references of the mock; the other 2 declare none, so they are not marked; post.spec.ts of the core checks it too). Checked in the DOM, not with a screen reader."
+      "note": "axe html-has-lang and valid-lang on every page; on the Spanish article html lang is es, and the reference titles whose data declares a language carry lang=\"en\" (2 of the 4 references of the mock; the other 2 declare none, so they are not marked). Checked in the DOM, not with a screen reader."
     },
     "zoom.200": {
       "result": "pass",
-      "note": "640x400 at devicePixelRatio 2 (200 % of 1280), 6 pages x noche/día x notice shown/dismissed = 24 runs: scrollWidth equals clientWidth, and no text leaf is past the edge outside a scroller. At 390 px 200 % would be 195 px, below the 320 px of the reflow line, so it was not run there (zoom.reflow-320 covers narrow widths)."
+      "note": "640x400 at devicePixelRatio 2 (200 % of 1280), 6 pages x noche/dia x notice shown/dismissed = 24 runs: scrollWidth equals clientWidth, and no text leaf is past the edge outside a scroller. At 390 px 200 % would be 195 px, below the 320 px of the reflow line, so it was not run there (zoom.reflow-320 covers narrow widths)."
     },
     "zoom.reflow-320": {
       "result": "pass",
-      "note": "reflow.spec.ts: home, blog, article and about do not scroll horizontally at 320 px, and a probe of the specimen at 320x640 has scrollWidth 320, in noche and día (4 runs of the probe, 4 projects of the spec)."
+      "note": "reflow.spec.ts: home, blog, article and about do not scroll horizontally at 320 px, and a probe of the specimen at 320x640 has scrollWidth 320, in noche and dia (4 runs of the probe, 4 projects of the spec)."
     },
     "zoom.text-spacing": {
       "result": "pass",
-      "note": "WCAG 1.4.12 CSS injected (line height 1.5, letter spacing 0.12 em, word spacing 0.16 em, paragraph margin 2 em) on 6 pages x noche/día x 1280/390 px x notice shown/dismissed = 48 runs: no horizontal overflow and no newly clipped text, except on the specimen at 390 px (4 runs), where the frame of a group of the core's specimen clips a sample once the spacing grows (the same as in the 1.0.1 run); SVG diagrams were not judged. Automatic detection, not a full read."
+      "note": "WCAG 1.4.12 CSS injected (line height 1.5, letter spacing 0.12 em, word spacing 0.16 em, paragraph margin 2 em) on 6 pages x noche/dia x 1280/390 px x notice shown/dismissed = 48 runs: no horizontal overflow and no newly clipped text, except on the specimen at 390 px (4 runs), where the frame of a group of the core's specimen clips a sample once the spacing grows (the same as in the 1.0.2 run); SVG diagrams were not judged. Automatic detection, not a full read."
     },
     "motion.reduced": {
       "result": "pass",
-      "note": "motion/reduced.spec.ts, noche-reduced and dia-reduced (22 tests): no animation after load and while scrolling on every page and the specimen, and none while the theme switch, the search palette, the menu sheet and the account menu open and close. Chromium only."
+      "note": "motion/reduced.spec.ts, noche-reduced and dia-reduced (22 tests): no animation after load and while scrolling on every page, the section pages and the specimen, and none while the theme switch, the search palette, the menu sheet and the account menu open and close. Chromium only."
     },
     "motion.forced-colors": {
       "result": "not-verified",
-      "note": "forcedColors: active, home, blog, article, about and the Spanish article x noche/día x 1280/390 px (20 runs, 1226 Tab stops): every stop shows an indicator (pixels, or an outline on its card), and the pressed and idle switches differ in colour or weight. But some icon buttons, the theme switch segments, the slider dots and the blog search field have no border, outline, shadow or background of their own in forced colors, and whether they are still identifiable was not judged; neither were text legibility, information by colour alone, or the decorative SVGs. Chromium only."
+      "note": "forcedColors: active, home, blog, article, about and the Spanish article x noche/dia x 1280/390 px (20 runs, 1226 Tab stops): every stop shows an indicator (pixels, or an outline on its card), and the pressed and idle switches differ in colour or weight. On the specimen the 6 stops of the new markup (composition links, consent checkboxes) show an indicator in all 4 projects and the checkboxes are drawn by the system. But some icon buttons, the theme switch segments, the slider dots and the blog search field have no border, outline, shadow or background of their own in forced colors, and whether they are still identifiable was not judged; neither were text legibility, information by colour alone, or the decorative SVGs. Chromium only."
     },
     "pointer.target-size": {
       "result": "pass",
-      "note": "Axe (wcag22aa, target-size): no violation in the runs of a11y.spec.ts. By hand, a script on the article and the Spanish article, noche and día at 1280 and 390 px: the slider buttons are 44x44 px; the dots take the pointer on at least 24x4 px and no other target is within a 24 px circle centred on each (WCAG 2.5.8 spacing); the table of contents links are at least 65x38 px. The hit area is measured with elementFromPoint around each control."
+      "note": "Axe (wcag22aa, target-size): no violation in the runs of a11y.spec.ts, the specimen included. By hand, a script on the article and the Spanish article, noche and dia at 1280 and 390 px: the slider buttons are 44x44 px; the dots take the pointer on at least 24x4 px and no other target is within a 24 px circle centred on each (WCAG 2.5.8 spacing); the table of contents links are at least 65x38 px. On the specimen the consent checkboxes are 13x13 px, no other target is within a 24 px circle centred on each, and a click on their label text toggles them (4 projects). The hit area is measured with elementFromPoint around each control."
     },
     "pointer.dragging": {
       "result": "pass",
-      "note": "Spanish article slider, noche/día x 1280/390 px: Previous and Next buttons (44x44 px) move it with a click, ArrowRight and ArrowLeft move it when focused (the slide change takes about a second before the next one is taken), the dots are buttons; nothing needs dragging."
+      "note": "Spanish article slider, noche/dia x 1280/390 px: Previous and Next buttons (44x44 px) move it with a click, ArrowRight and ArrowLeft move it when focused (the slide change takes about a second before the next one is taken), the dots are buttons; nothing needs dragging."
     }
   }
 }
