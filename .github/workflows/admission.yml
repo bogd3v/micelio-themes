@@ -1,7 +1,7 @@
 name: Admission
 
 # A pull request admits the themes it changes, the way publishing admits them (docs/themes/publishing-a-theme.md of bogd3v/micelio): theme:check and
-# theme:pack, performance budgets per site mode, visual regression and axe. Pinned to one core commit (bc9fb2f, until v0.9.0 is tagged): replace bc9fb2f and core-ref together
+# theme:pack, performance budgets per site mode, visual regression and axe. Pinned to one core commit (1288a69, until v0.10.0 is tagged): replace 1288a69 and core-ref together
 # with the other workflows. Baselines are read from __screenshots__/<id>/ and the accessibility record from accessibility/<id>.json.
 # Each theme is admitted from its own folder, as publish.yml does: a build that holds every theme of the repository compiles the slots of
 # the others in as chunks loaded on demand, and their entries count against the JavaScript budget of a theme that never ships with them.
@@ -58,11 +58,11 @@ jobs:
       fail-fast: false
       matrix:
         theme: ${{ fromJSON(needs.themes.outputs.ids) }}
-    uses: bogd3v/micelio/.github/workflows/theme-admission.yml@bc9fb2f9f26455cd1c9b09158595c171fe8a4894
+    uses: bogd3v/micelio/.github/workflows/theme-admission.yml@1288a692161351f3c439e4965d5ad846c152ca8d
     with:
       theme-dirs: themes/${{ matrix.theme }}
       themes: '["${{ matrix.theme }}"]'
-      core-ref: bc9fb2f9f26455cd1c9b09158595c171fe8a4894
+      core-ref: 1288a692161351f3c439e4965d5ad846c152ca8d
       artifact-prefix: admission-${{ matrix.theme }}
     permissions:
       contents: read
